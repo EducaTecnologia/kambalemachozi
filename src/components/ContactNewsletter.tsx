@@ -1,0 +1,263 @@
+import React, { useState } from 'react';
+import { Mail, MapPin, Send, CheckCircle2, Phone, ShieldCheck, Building2 } from 'lucide-react';
+import { getTranslation } from '../data/content';
+import { Language } from '../types';
+
+interface ContactNewsletterProps {
+  currentLang?: Language;
+}
+
+export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLang = 'fr' }) => {
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+  const t = getTranslation(currentLang).contact;
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: t.subjectOptions[0] || 'Génie Civil & Infrastructures',
+    message: '',
+  });
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+    setContactSubmitted(true);
+    setTimeout(() => {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: t.subjectOptions[0] || 'Génie Civil & Infrastructures',
+        message: '',
+      });
+      setContactSubmitted(false);
+    }, 4500);
+  };
+
+  return (
+    <section id="contact" className="relative py-20 sm:py-28 bg-white border-b border-slate-200 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Direct Coordinates & Sedes */}
+          <div className="lg:col-span-5 space-y-6">
+            <div>
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-8 h-[2px] bg-[#D71920]" />
+                <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#1B2A6B]">
+                  {t.sectionKicker}
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
+                {t.title}
+              </h2>
+              <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+                {t.sub}
+              </p>
+            </div>
+
+            {/* Sede Card DRC */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+              <div className="flex items-center gap-2 text-[#D71920] text-xs font-bold uppercase tracking-wider">
+                <MapPin className="w-4 h-4 shrink-0" />
+                <span>{t.hqDrcTitle}</span>
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-display">{t.hqDrcOrg}</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                {t.hqDrcLoc}
+              </p>
+            </div>
+
+            {/* Legal & Fiscal Identifiers Card (from PDF Page 1 & 2) */}
+            <div className="p-5 rounded-2xl bg-[#071026] text-white border border-slate-800 space-y-3 shadow-md">
+              <div className="flex items-center gap-2 text-[#F7C600] text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Identifiants Légaux & Fiscaux (RDC)</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-mono">
+                <div className="bg-white/5 px-3 py-2 rounded-lg border border-white/10">
+                  <span className="text-slate-400 block text-[10px] uppercase">RCCM</span>
+                  <span className="text-white font-bold">CD/KNG/RCCM/20-A-01815</span>
+                </div>
+                <div className="bg-white/5 px-3 py-2 rounded-lg border border-white/10">
+                  <span className="text-slate-400 block text-[10px] uppercase">ID. Nationale</span>
+                  <span className="text-white font-bold">01-F4300-N63029P</span>
+                </div>
+                <div className="bg-white/5 px-3 py-2 rounded-lg border border-white/10">
+                  <span className="text-slate-400 block text-[10px] uppercase">N° Impôt (DGI)</span>
+                  <span className="text-white font-bold">A2161439L</span>
+                </div>
+                <div className="bg-white/5 px-3 py-2 rounded-lg border border-white/10">
+                  <span className="text-slate-400 block text-[10px] uppercase">ARSP / CD</span>
+                  <span className="text-[#F7C600] font-bold">3914908074</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Contact Points (PDF Page 7) */}
+            <div className="space-y-3 text-sm text-slate-700 pt-2 border-t border-slate-200">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-red-50 text-[#D71920] flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Téléphone Direct & WhatsApp
+                  </span>
+                  <a
+                    href="tel:+243817170622"
+                    className="hover:text-[#D71920] transition-colors font-bold text-slate-900"
+                  >
+                    +243 817 170 622
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#1B2A6B] flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Direction Générale
+                  </span>
+                  <a
+                    href="mailto:direction@kambalemachozi.com"
+                    className="hover:text-[#1B2A6B] transition-colors font-bold text-slate-900 block"
+                  >
+                    direction@kambalemachozi.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Building2 className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Service Commercial & Cotations
+                  </span>
+                  <a
+                    href="mailto:etsmachozi@gmail.com"
+                    className="hover:text-[#1B2A6B] transition-colors font-bold text-slate-900 block"
+                  >
+                    etsmachozi@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Contact Message Form */}
+          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-lg">
+            <h3 className="text-2xl font-bold text-slate-900 font-display mb-2">
+              {t.formTitle}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 mb-6 font-normal">
+              {t.formSub}
+            </p>
+
+            {contactSubmitted ? (
+              <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3 animate-[fadeIn_0.3s_ease-out]">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <h4 className="text-lg font-bold text-emerald-950 font-display">
+                  {t.sentSuccessTitle}
+                </h4>
+                <p className="text-xs sm:text-sm text-emerald-800">
+                  {t.sentSuccessDesc}
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleContactSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      {t.nameLabel}
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder={t.namePlaceholder}
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#1B2A6B]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      {t.emailLabel}
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="nom@entreprise.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#1B2A6B]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      Téléphone / WhatsApp
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+243 ..."
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#1B2A6B]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      {t.subjectLabel}
+                    </label>
+                    <select
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#1B2A6B] cursor-pointer"
+                    >
+                      {t.subjectOptions.map((opt, i) => (
+                        <option key={i} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                    {t.msgLabel}
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    placeholder={t.msgPlaceholder}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#1B2A6B] resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3.5 px-6 rounded-xl bg-[#1B2A6B] hover:bg-[#2A3EB1] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow"
+                >
+                  <span>{t.sendBtn}</span>
+                  <Send className="w-4 h-4 text-[#F7C600]" />
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

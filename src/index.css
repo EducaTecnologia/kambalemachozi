@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --navy: #1B2A6B;
+    --royal: #2A3EB1;
+    --red: #D71920;
+    --yellow: #F7C600;
+    --white: #FFFFFF;
+    --ink-dark: #0B1030;
+    --mist: #F4F6FC;
+    --gray: #5A6285;
+    --font-display: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--ink-dark);
+    color: #F1F5F9;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B1030;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A3EB1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D71920;
+}
+
+/* Keyframe animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.glow-pin {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Subtle film grain overlay */
+.bg-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}

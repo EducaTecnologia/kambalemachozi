@@ -1,0 +1,8 @@
+{
+  "name": "KAMBALE MACHOZI ",
+  "description": "L’établissement KAMBALE MACHOZI (KM) est une société congolaise basée à Kinshasa, attachée aux normes les plus élevées en matière de gouvernance, de conformité et d’exécution opérationnelle. Vision institutionnelle : Être le partenaire de référence de l’État congolais et des multinationales privées dans le secteur des infrastructures et des services essentiels de notre pays. Norme de conformité : Conformité fiscale, commerciale et sociale totale en République démocratique du Congo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
