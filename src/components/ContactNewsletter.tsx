@@ -26,14 +26,12 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
     if (!formData.name || !formData.email || !formData.message) return;
 
     const waText =
-      `*NOUVEAU MESSAGE DE CONTACT — ETS KAMBALE MACHOZI*\n` +
-      `─────────────────────────────────────────\n` +
-      `◆ *[PROFIL / NOME]* : ${formData.name}\n` +
-      `◆ *[EMAIL]* : ${formData.email}\n` +
-      `◆ *[TÉLÉPHONE / WHATSAPP]* : ${formData.phone || 'Non renseigné'}\n` +
-      `◆ *[SUJET / ASSUNTO]* : ${formData.subject}\n` +
-      `─────────────────────────────────────────\n` +
-      `● *[MESSAGE / MENSAGEM]* :\n${formData.message}`;
+      `NOUVEAU MESSAGE DE CONTACT — ETS KAMBALE MACHOZI\n\n` +
+      `👤 Nom / Nome: ${formData.name}\n` +
+      `✉️ Email: ${formData.email}\n` +
+      `📞 Téléphone / WhatsApp: ${formData.phone || 'Non renseigné'}\n` +
+      `📋 Sujet / Assunto: ${formData.subject}\n\n` +
+      `💬 Message / Mensagem:\n${formData.message}`;
 
     const waUrl = createWhatsAppUrl(waText);
     setLastWhatsAppUrl(waUrl);
@@ -188,7 +186,7 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                   {t.sentSuccessTitle || 'Informations préparées pour WhatsApp'}
                 </h4>
                 <p className="text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
-                  Votre demande a été transmise au numéro officiel WhatsApp <strong className="font-mono">{WHATSAPP_DISPLAY}</strong>. Si l'application ne s'est pas ouverte automatiquement, cliquez sur le bouton ci-dessous :
+                  {t.sentSuccessDesc || `Votre demande a été préparée pour le numéro officiel WhatsApp ${WHATSAPP_DISPLAY}.`}
                 </p>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -199,13 +197,13 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     className="w-full sm:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <MessageSquare className="w-4 h-4" />
-                    <span>Ouvrir WhatsApp ({WHATSAPP_DISPLAY})</span>
+                    <span>{currentLang === 'pt' ? 'Abrir no WhatsApp' : currentLang === 'en' ? 'Open WhatsApp' : 'Ouvrir WhatsApp'} ({WHATSAPP_DISPLAY})</span>
                   </a>
                   <button
                     onClick={() => setContactSubmitted(false)}
                     className="w-full sm:w-auto px-5 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
                   >
-                    Nouveau Message
+                    {currentLang === 'pt' ? 'Enviar outra mensagem' : currentLang === 'en' ? 'New Message' : 'Nouveau Message'}
                   </button>
                 </div>
               </div>

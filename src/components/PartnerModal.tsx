@@ -31,15 +31,13 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, cur
     e.preventDefault();
 
     const waText =
-      `*PROPOSITION DE PARTENARIAT STRATÉGIQUE — ETS KAMBALE MACHOZI*\n` +
-      `─────────────────────────────────────────\n` +
-      `◆ *[ORGANISATION / ENTREPRISE]* : ${formData.organizationName}\n` +
-      `◆ *[REPRÉSENTANT / NOM]* : ${formData.contactPerson}\n` +
-      `◆ *[EMAIL]* : ${formData.email}\n` +
-      `◆ *[TÉLÉPHONE / WHATSAPP]* : ${formData.phone || 'Non renseigné'}\n` +
-      `◆ *[TYPE DE PARTENARIAT]* : ${formData.type}\n` +
-      `─────────────────────────────────────────\n` +
-      `● *[PROJET / DESCRIPTION]* :\n${formData.message}`;
+      `PROPOSITION DE PARTENARIAT STRATÉGIQUE — ETS KAMBALE MACHOZI\n\n` +
+      `🏢 Organisation / Entreprise: ${formData.organizationName}\n` +
+      `👤 Représentant / Nom: ${formData.contactPerson}\n` +
+      `✉️ Email: ${formData.email}\n` +
+      `📞 Téléphone / WhatsApp: ${formData.phone || 'Non renseigné'}\n` +
+      `🤝 Type de Partenariat: ${formData.type}\n\n` +
+      `💬 Projet / Description:\n${formData.message}`;
 
     const waUrl = createWhatsAppUrl(waText);
     setLastWhatsAppUrl(waUrl);
@@ -196,7 +194,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, cur
                 className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Ouvrir WhatsApp</span>
+                <span>{currentLang === 'pt' ? 'Abrir no WhatsApp' : currentLang === 'en' ? 'Open WhatsApp' : 'Ouvrir WhatsApp'}</span>
               </a>
               <button
                 onClick={handleClose}

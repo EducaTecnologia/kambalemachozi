@@ -31,15 +31,13 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
     e.preventDefault();
 
     const waText =
-      `*CANDIDATURE / SOUS-TRAITANCE & ARSP — ETS KAMBALE MACHOZI*\n` +
-      `─────────────────────────────────────────\n` +
-      `◆ *[PROFIL / CANDIDAT]* : ${formData.name}\n` +
-      `◆ *[EMAIL]* : ${formData.email}\n` +
-      `◆ *[TÉLÉPHONE / WHATSAPP]* : ${formData.phone}\n` +
-      `◆ *[LOCALISATION / VILLE]* : ${formData.country}\n` +
-      `◆ *[DOMAINE / SECTEUR]* : ${formData.area}\n` +
-      `◆ *[DISPONIBILITÉ]* : ${formData.availability}\n` +
-      `─────────────────────────────────────────`;
+      `CANDIDATURE / SOUS-TRAITANCE & ARSP — ETS KAMBALE MACHOZI\n\n` +
+      `👤 Candidat / Nom: ${formData.name}\n` +
+      `✉️ Email: ${formData.email}\n` +
+      `📞 Téléphone / WhatsApp: ${formData.phone}\n` +
+      `📍 Localisation / Ville: ${formData.country}\n` +
+      `🏗️ Domaine / Secteur: ${formData.area}\n` +
+      `⏱️ Disponibilité: ${formData.availability}`;
 
     const waUrl = createWhatsAppUrl(waText);
     setLastWhatsAppUrl(waUrl);
@@ -184,7 +182,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
                 className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Ouvrir WhatsApp</span>
+                <span>{currentLang === 'pt' ? 'Abrir no WhatsApp' : currentLang === 'en' ? 'Open WhatsApp' : 'Ouvrir WhatsApp'}</span>
               </a>
               <button
                 onClick={handleClose}
