@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeft, ChevronRight, FileText, ArrowRight, Pause, Play, Phone, Mail } from 'lucide-react';
 import { Language } from '../types';
 import { I18N_STRINGS, IMAGES } from '../data/content';
+import { WHATSAPP_DISPLAY, createWhatsAppUrl, sendToWhatsApp } from '../utils/whatsapp';
 
 interface HeroSliderProps {
   currentLang: Language;
@@ -222,9 +223,18 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
         <span aria-hidden="true">·</span>
         <span>ARSP: 3914908074</span>
         <span aria-hidden="true">·</span>
-        <a href="https://api.whatsapp.com/send?phone=5591996156672" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5">
+        <a
+          href={createWhatsAppUrl()}
+          onClick={(e) => {
+            e.preventDefault();
+            sendToWhatsApp('Bonjour ETS KAMBALE MACHOZI, je souhaite des renseignements.');
+          }}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+        >
           <Phone className="w-3 h-3 text-emerald-400" />
-          <span>+55 91 996156672</span>
+          <span>{WHATSAPP_DISPLAY}</span>
         </a>
         <span aria-hidden="true">·</span>
         <a href="mailto:contact@kambalemachozi.com" className="hover:text-[#F7C600] transition-colors inline-flex items-center gap-1">

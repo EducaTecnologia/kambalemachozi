@@ -3,7 +3,7 @@ import { X, CheckCircle2, Users, MessageSquare } from 'lucide-react';
 import { Logo } from './Logo';
 import { getTranslation } from '../data/content';
 import { Language } from '../types';
-import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, createWhatsAppUrl, sendToWhatsApp } from '../utils/whatsapp';
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, createWhatsAppUrl, sendToWhatsApp, isMobileOrTablet } from '../utils/whatsapp';
 
 interface VolunteerModalProps {
   isOpen: boolean;
@@ -14,6 +14,7 @@ interface VolunteerModalProps {
 export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose, currentLang = 'fr' }) => {
   const [submitted, setSubmitted] = useState(false);
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState('');
+  const [lastMessage, setLastMessage] = useState('');
   const t = getTranslation(currentLang).volunteerModal;
 
   const [formData, setFormData] = useState({
@@ -41,6 +42,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
 
     const waUrl = createWhatsAppUrl(waText);
     setLastWhatsAppUrl(waUrl);
+    setLastMessage(waText);
     setSubmitted(true);
 
     sendToWhatsApp(waText);
@@ -174,12 +176,22 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
               Vos informations ont été préparées pour le numéro officiel WhatsApp <strong className="font-mono text-emerald-300">{WHATSAPP_DISPLAY}</strong>.
             </p>
 
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-medium">
+              <span>{isMobileOrTablet() ? '📱 Redirection vers l’application WhatsApp' : '💻 Redirection vers WhatsApp Web'}</span>
+            </div>
+
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href={lastWhatsAppUrl || `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`}
+                href={lastWhatsAppUrl || createWhatsAppUrl()}
+                onClick={(e) => {
+                  if (lastMessage) {
+                    e.preventDefault();
+                    sendToWhatsApp(lastMessage);
+                  }
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>{currentLang === 'pt' ? 'Abrir no WhatsApp' : currentLang === 'en' ? 'Open WhatsApp' : 'Ouvrir WhatsApp'}</span>

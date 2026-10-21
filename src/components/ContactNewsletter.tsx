@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, MapPin, Send, CheckCircle2, Phone, ShieldCheck, Building2, MessageSquare } from 'lucide-react';
 import { getTranslation } from '../data/content';
 import { Language } from '../types';
-import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, EMAIL_DIRECTEUR, EMAIL_COMMERCIAL, createWhatsAppUrl, sendToWhatsApp } from '../utils/whatsapp';
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, EMAIL_DIRECTEUR, EMAIL_COMMERCIAL, createWhatsAppUrl, sendToWhatsApp, isMobileOrTablet } from '../utils/whatsapp';
 
 interface ContactNewsletterProps {
   currentLang?: Language;
@@ -11,6 +11,7 @@ interface ContactNewsletterProps {
 export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLang = 'fr' }) => {
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState<string>('');
+  const [lastWhatsAppMessage, setLastWhatsAppMessage] = useState<string>('');
   const t = getTranslation(currentLang).contact;
 
   const [formData, setFormData] = useState({
@@ -35,9 +36,10 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
 
     const waUrl = createWhatsAppUrl(waText);
     setLastWhatsAppUrl(waUrl);
+    setLastWhatsAppMessage(waText);
     setContactSubmitted(true);
 
-    // Auto-trigger WhatsApp dispatch
+    // Auto-trigger WhatsApp dispatch (WhatsApp Web on desktop, WhatsApp App on mobile/tablet)
     sendToWhatsApp(waText);
 
     setTimeout(() => {
@@ -121,10 +123,14 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     Téléphone Direct & WhatsApp
                   </span>
                   <a
-                    href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`}
+                    href={createWhatsAppUrl()}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      sendToWhatsApp('Bonjour ETS KAMBALE MACHOZI, je souhaite des informations sur vos prestations.');
+                    }}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-emerald-600 transition-colors font-bold text-slate-900 inline-flex items-center gap-1.5"
+                    className="hover:text-emerald-600 transition-colors font-bold text-slate-900 inline-flex items-center gap-1.5 cursor-pointer"
                   >
                     <span>{WHATSAPP_DISPLAY}</span>
                     <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.2 rounded font-semibold">WhatsApp 24/7</span>
@@ -188,10 +194,19 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                 <p className="text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
                   {t.sentSuccessDesc || `Votre demande a été préparée pour le numéro officiel WhatsApp ${WHATSAPP_DISPLAY}.`}
                 </p>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100/80 text-emerald-800 text-xs font-medium">
+                  <span>{isMobileOrTablet() ? '📱 Redirection vers l’application WhatsApp' : '💻 Redirection vers WhatsApp Web'}</span>
+                </div>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a
-                    href={lastWhatsAppUrl || `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`}
+                    href={lastWhatsAppUrl || createWhatsAppUrl()}
+                    onClick={(e) => {
+                      if (lastWhatsAppMessage) {
+                        e.preventDefault();
+                        sendToWhatsApp(lastWhatsAppMessage);
+                      }
+                    }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"

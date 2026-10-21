@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Quote, Shield, CheckCircle2, Globe, Award } from 'lucide-react';
+import { MapPin, Quote, Shield, CheckCircle2, Award } from 'lucide-react';
 import { getTranslation } from '../data/content';
 import { Language } from '../types';
 
@@ -10,12 +10,10 @@ interface TeamSectionProps {
 export const TeamSection: React.FC<TeamSectionProps> = ({ currentLang = 'fr' }) => {
   const t = getTranslation(currentLang).team;
   const president = t.members[0];
-  const directors = t.members.slice(1);
 
   return (
     <section id="equipe" className="relative py-20 sm:py-28 bg-slate-50 border-b border-slate-200 overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1B2A6B_1px,transparent_1px)] [background-size:24px_24px]" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
@@ -33,9 +31,9 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ currentLang = 'fr' }) 
           </p>
         </div>
 
-        {/* 1. Featured Executive Card (M. Bertrand Kambale Machozi) */}
+        {/* Featured Executive Card (M. Bertrand Kambale Machozi) */}
         {president && (
-          <div className="mb-10 sm:mb-14 rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-10 shadow-xl shadow-slate-200/50 hover:border-slate-300 transition-all duration-300">
+          <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-10 shadow-xl shadow-slate-200/50 hover:border-slate-300 transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* Leader Photo */}
               <div className="lg:col-span-5 relative">
@@ -93,64 +91,6 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ currentLang = 'fr' }) 
             </div>
           </div>
         )}
-
-        {/* 2. Operational Divisions */}
-        <div>
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">{t.directorsHeader}</span>
-            <div className="h-[1px] flex-1 bg-slate-200" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {directors.map((member, idx) => (
-              <div
-                key={idx}
-                className="group rounded-3xl bg-white border border-slate-200/90 hover:border-slate-300 hover:shadow-xl p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Portrait Container */}
-                  <div className="relative rounded-2xl overflow-hidden aspect-[4/4.3] w-full mb-5 bg-slate-100 border border-slate-100 shadow-sm">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute bottom-2.5 left-2.5 right-2.5 bg-[#0A1938]/85 backdrop-blur-md px-3 py-1.5 rounded-xl text-[11px] font-semibold text-white flex items-center justify-between border border-white/10 shadow-md">
-                      <div className="flex items-center gap-1.5 truncate">
-                        <MapPin className="w-3.5 h-3.5 text-[#F7C600] shrink-0" />
-                        <span className="truncate">{member.location}</span>
-                      </div>
-                      <Globe className="w-3 h-3 text-slate-300 shrink-0 ml-1" />
-                    </div>
-                  </div>
-
-                  <div className="mb-2">
-                    <span className="inline-block text-xs font-black uppercase tracking-wider text-[#D71920] bg-red-50 border border-red-100 px-2.5 py-0.5 rounded-md">
-                      {member.role}
-                    </span>
-                  </div>
-
-                  <h4 className="text-lg sm:text-xl font-black text-slate-900 font-display mb-2.5 group-hover:text-[#1B2A6B] transition-colors">
-                    {member.name}
-                  </h4>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5 font-normal">
-                    {member.bio}
-                  </p>
-                </div>
-
-                {member.quote && (
-                  <div className="pt-3.5 mt-auto border-t border-slate-100 text-xs text-slate-600 italic bg-slate-50/70 p-3 rounded-xl flex items-start gap-2">
-                    <Quote className="w-3.5 h-3.5 text-[#1B2A6B] shrink-0 mt-0.5" />
-                    <span className="leading-snug">« {member.quote} »</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
