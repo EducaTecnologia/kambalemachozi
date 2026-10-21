@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FileText,
   ShieldCheck,
@@ -30,6 +30,11 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [selectedSimSector, setSelectedSimSector] = useState<number>(1);
   const [simContractType, setSimContractType] = useState<'monthly' | 'once'>('monthly');
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   const t = getTranslation(currentLang).otherWaysToDonate;
 
@@ -345,10 +350,12 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
               <div className="text-xs text-blue-200">{t.secureNote}</div>
             </div>
             <a
-              href="mailto:direction@kambalemachozi.com?subject=Demande%20de%20Cotation%20-%20ETS%20KAMBALE%20MACHOZI"
-              className="px-8 py-3.5 bg-[#D71920] hover:bg-[#b81218] text-white font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer whitespace-nowrap"
+              href="https://wa.me/5591996156672?text=Bonjour%20ETS%20KAMBALE%20MACHOZI%2C%20je%20souhaite%20solliciter%20une%20cotation%20officielle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer whitespace-nowrap flex items-center gap-2"
             >
-              {t.donateNowBtn}
+              <span>{t.donateNowBtn} (WhatsApp)</span>
             </a>
           </div>
         </div>
@@ -386,10 +393,10 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
                 <div><strong>Entité :</strong> ETS KAMBALE MACHOZI (KM)</div>
                 <div><strong>Directeur Général :</strong> M. Bertrand Kambale Machozi</div>
                 <div><strong>Adresse :</strong> Av. Colonel Ebeya n°1746/A, C/Gombe, Kinshasa, RDC</div>
-                <div><strong>Téléphone Direct :</strong> +243 817 170 622</div>
+                <div><strong>Téléphone Direct & WhatsApp :</strong> +55 91 996156672</div>
               </div>
               <button
-                onClick={() => handleCopy('ETS KAMBALE MACHOZI (KM) - Av. Colonel Ebeya n°1746/A, C/Gombe, Kinshasa, RDC - Tel: +243 817 170 622', 'hq')}
+                onClick={() => handleCopy('ETS KAMBALE MACHOZI (KM) - Av. Colonel Ebeya n°1746/A, C/Gombe, Kinshasa, RDC - Tel: +55 91 996156672', 'hq')}
                 className="w-full py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 {copiedKey === 'hq' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
@@ -406,13 +413,13 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
                 </span>
               </div>
               <div className="text-xs text-slate-600 space-y-1.5">
-                <div><strong>Email Institutionnel :</strong> direction@kambalemachozi.com</div>
-                <div><strong>Email Commercial :</strong> etsmachozi@gmail.com</div>
-                <div><strong>Hub Minier :</strong> Kolwezi (Lualaba) & Grand Katanga</div>
-                <div><strong>Hub Agro-Export :</strong> Goma (Nord-Kivu), Beni & Port de Matadi</div>
+                <div><strong>Email Direction :</strong> directeur@kambalemachozi.com</div>
+                <div><strong>Email Commercial :</strong> contact@kambalemachozi.com</div>
+                <div><strong>WhatsApp Direct :</strong> +55 91 996156672</div>
+                <div><strong>Hub Minier & Export :</strong> Kolwezi (Lualaba) • Goma • Matadi</div>
               </div>
               <button
-                onClick={() => handleCopy('direction@kambalemachozi.com | etsmachozi@gmail.com | +243 817 170 622', 'emails')}
+                onClick={() => handleCopy('directeur@kambalemachozi.com | contact@kambalemachozi.com | +55 91 996156672', 'emails')}
                 className="w-full py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 {copiedKey === 'emails' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
@@ -437,11 +444,11 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
               </p>
             </div>
             <a
-              href="mailto:direction@kambalemachozi.com"
+              href="mailto:directeur@kambalemachozi.com"
               className="py-2.5 px-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold text-center transition-colors flex items-center justify-center gap-2"
             >
               <Mail className="w-3.5 h-3.5" />
-              <span>direction@kambalemachozi.com</span>
+              <span>directeur@kambalemachozi.com</span>
             </a>
           </div>
 
@@ -458,11 +465,13 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
               </p>
             </div>
             <a
-              href="tel:+243817170622"
-              className="py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold text-center transition-colors flex items-center justify-center gap-2"
+              href="https://wa.me/5591996156672"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-bold text-center transition-colors flex items-center justify-center gap-2"
             >
-              <Phone className="w-3.5 h-3.5 text-[#D71920]" />
-              <span>{t.inKindBtn} (+243 817 170 622)</span>
+              <Phone className="w-3.5 h-3.5 text-emerald-600" />
+              <span>{t.inKindBtn} (+55 91 996156672)</span>
             </a>
           </div>
         </div>

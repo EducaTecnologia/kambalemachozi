@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Users } from 'lucide-react';
+import { X, CheckCircle2, Users, MessageSquare } from 'lucide-react';
 import { Logo } from './Logo';
 import { getTranslation } from '../data/content';
 import { Language } from '../types';
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, createWhatsAppUrl, sendToWhatsApp } from '../utils/whatsapp';
 
 interface VolunteerModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ interface VolunteerModalProps {
 
 export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose, currentLang = 'fr' }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState('');
   const t = getTranslation(currentLang).volunteerModal;
 
   const [formData, setFormData] = useState({
@@ -19,15 +21,29 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
     email: '',
     phone: '',
     country: 'RDC',
-    area: t.areaOptions[0] || 'Assainissement',
-    availability: t.availOptions[0] || 'Temps plein',
+    area: t.areaOptions[0] || 'Génie Civil & BTP',
+    availability: t.availOptions[0] || 'Immédiate',
   });
 
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const waText =
+      `*CANDIDATURE / SOUS-TRAITANCE & ARSP — ETS KAMBALE MACHOZI*\n\n` +
+      `👤 *Nom / Candidat:* ${formData.name}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📱 *Téléphone / WhatsApp:* ${formData.phone}\n` +
+      `🌍 *Localisation:* ${formData.country}\n` +
+      `🏗️ *Domaine / Secteur:* ${formData.area}\n` +
+      `⏱️ *Disponibilité:* ${formData.availability}`;
+
+    const waUrl = createWhatsAppUrl(waText);
+    setLastWhatsAppUrl(waUrl);
     setSubmitted(true);
+
+    sendToWhatsApp(waText);
   };
 
   const handleClose = () => {
@@ -98,7 +114,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
                   <input
                     type="tel"
                     required
-                    placeholder="+243 ..."
+                    placeholder="+243 ... / +55 ..."
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white text-xs focus:outline-hidden focus:ring-2 focus:ring-[#F7C600]"
@@ -138,11 +154,14 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
 
               <button
                 type="submit"
-                className="w-full mt-2 py-3 bg-[#D71920] hover:bg-[#b81218] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                className="w-full mt-2 py-3 bg-[#D71920] hover:bg-[#b81218] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-[0.99]"
               >
                 <Users className="w-4 h-4" />
                 <span>{t.submitBtn}</span>
               </button>
+              <p className="text-[10px] text-center text-slate-400">
+                Transmission automatique sur WhatsApp <span className="text-emerald-400 font-semibold">{WHATSAPP_DISPLAY}</span>
+              </p>
             </form>
           </div>
         ) : (
@@ -151,15 +170,27 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose,
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h4 className="text-xl font-bold font-display">{t.successTitle}</h4>
-            <p className="text-xs text-slate-300 max-w-sm mx-auto">
-              {t.successDesc}
+            <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
+              Vos informations ont été préparées pour le numéro officiel WhatsApp <strong className="font-mono text-emerald-300">{WHATSAPP_DISPLAY}</strong>.
             </p>
-            <button
-              onClick={handleClose}
-              className="mt-4 px-6 py-2.5 bg-white/20 hover:bg-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
-            >
-              {t.closeBtn}
-            </button>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href={lastWhatsAppUrl || `https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Ouvrir WhatsApp</span>
+              </a>
+              <button
+                onClick={handleClose}
+                className="w-full sm:w-auto px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
+              >
+                {t.closeBtn}
+              </button>
+            </div>
           </div>
         )}
       </div>

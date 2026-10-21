@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send, CheckCircle2, Phone, ShieldCheck, Building2 } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, Phone, ShieldCheck, Building2, MessageSquare } from 'lucide-react';
 import { getTranslation } from '../data/content';
 import { Language } from '../types';
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, EMAIL_DIRECTEUR, EMAIL_COMMERCIAL, createWhatsAppUrl, sendToWhatsApp } from '../utils/whatsapp';
 
 interface ContactNewsletterProps {
   currentLang?: Language;
@@ -9,6 +10,7 @@ interface ContactNewsletterProps {
 
 export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLang = 'fr' }) => {
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState<string>('');
   const t = getTranslation(currentLang).contact;
 
   const [formData, setFormData] = useState({
@@ -22,7 +24,22 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
+
+    const waText =
+      `*NOUVEAU MESSAGE DE CONTACT — ETS KAMBALE MACHOZI*\n\n` +
+      `👤 *Nom / Nome:* ${formData.name}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📱 *Téléphone / WhatsApp:* ${formData.phone || 'Non renseigné'}\n` +
+      `📋 *Sujet / Assunto:* ${formData.subject}\n\n` +
+      `💬 *Message / Mensagem:*\n${formData.message}`;
+
+    const waUrl = createWhatsAppUrl(waText);
+    setLastWhatsAppUrl(waUrl);
     setContactSubmitted(true);
+
+    // Auto-trigger WhatsApp dispatch
+    sendToWhatsApp(waText);
+
     setTimeout(() => {
       setFormData({
         name: '',
@@ -31,8 +48,7 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
         subject: t.subjectOptions[0] || 'Génie Civil & Infrastructures',
         message: '',
       });
-      setContactSubmitted(false);
-    }, 4500);
+    }, 1000);
   };
 
   return (
@@ -94,10 +110,10 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
               </div>
             </div>
 
-            {/* Quick Contact Points (PDF Page 7) */}
+            {/* Quick Contact Points (PDF & Updated user coordinates) */}
             <div className="space-y-3 text-sm text-slate-700 pt-2 border-t border-slate-200">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-red-50 text-[#D71920] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
@@ -105,16 +121,19 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     Téléphone Direct & WhatsApp
                   </span>
                   <a
-                    href="tel:+243817170622"
-                    className="hover:text-[#D71920] transition-colors font-bold text-slate-900"
+                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-emerald-600 transition-colors font-bold text-slate-900 inline-flex items-center gap-1.5"
                   >
-                    +243 817 170 622
+                    <span>{WHATSAPP_DISPLAY}</span>
+                    <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.2 rounded font-semibold">WhatsApp 24/7</span>
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#1B2A6B] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#1B2A6B] flex items-center justify-center shrink-0 border border-blue-200">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
@@ -122,16 +141,16 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     Direction Générale
                   </span>
                   <a
-                    href="mailto:direction@kambalemachozi.com"
+                    href={`mailto:${EMAIL_DIRECTEUR}`}
                     className="hover:text-[#1B2A6B] transition-colors font-bold text-slate-900 block"
                   >
-                    direction@kambalemachozi.com
+                    {EMAIL_DIRECTEUR}
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
                   <Building2 className="w-4 h-4" />
                 </div>
                 <div>
@@ -139,10 +158,10 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     Service Commercial & Cotations
                   </span>
                   <a
-                    href="mailto:etsmachozi@gmail.com"
+                    href={`mailto:${EMAIL_COMMERCIAL}`}
                     className="hover:text-[#1B2A6B] transition-colors font-bold text-slate-900 block"
                   >
-                    etsmachozi@gmail.com
+                    {EMAIL_COMMERCIAL}
                   </a>
                 </div>
               </div>
@@ -159,16 +178,34 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
             </p>
 
             {contactSubmitted ? (
-              <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3 animate-[fadeIn_0.3s_ease-out]">
-                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-6 h-6" />
+              <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-4 animate-[fadeIn_0.3s_ease-out]">
+                <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h4 className="text-lg font-bold text-emerald-950 font-display">
-                  {t.sentSuccessTitle}
+                <h4 className="text-xl font-bold text-emerald-950 font-display">
+                  {t.sentSuccessTitle || 'Informations préparées pour WhatsApp'}
                 </h4>
-                <p className="text-xs sm:text-sm text-emerald-800">
-                  {t.sentSuccessDesc}
+                <p className="text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
+                  Votre demande a été transmise au numéro officiel WhatsApp <strong className="font-mono">{WHATSAPP_DISPLAY}</strong>. Si l'application ne s'est pas ouverte automatiquement, cliquez sur le bouton ci-dessous :
                 </p>
+
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a
+                    href={lastWhatsAppUrl || `https://wa.me/${WHATSAPP_NUMBER}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Ouvrir WhatsApp ({WHATSAPP_DISPLAY})</span>
+                  </a>
+                  <button
+                    onClick={() => setContactSubmitted(false)}
+                    className="w-full sm:w-auto px-5 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
+                  >
+                    Nouveau Message
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleContactSubmit} className="space-y-4">
@@ -209,7 +246,7 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     </label>
                     <input
                       type="tel"
-                      placeholder="+243 ..."
+                      placeholder="+243 ... / +55 ..."
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#1B2A6B]"
@@ -248,11 +285,14 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-6 rounded-xl bg-[#1B2A6B] hover:bg-[#2A3EB1] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow"
+                  className="w-full py-4 px-6 rounded-xl bg-[#1B2A6B] hover:bg-[#2A3EB1] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg active:scale-[0.99]"
                 >
                   <span>{t.sendBtn}</span>
                   <Send className="w-4 h-4 text-[#F7C600]" />
                 </button>
+                <p className="text-[11px] text-center text-slate-500 pt-1">
+                  Envoi direct et sécurisé vers le WhatsApp officiel <span className="font-semibold text-emerald-700">{WHATSAPP_DISPLAY}</span>
+                </p>
               </form>
             )}
           </div>

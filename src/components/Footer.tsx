@@ -47,18 +47,19 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onOpenDonate }) => 
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#F7C600] shrink-0" />
-                <a href="tel:+243817170622" className="hover:text-white transition-colors font-semibold">
-                  +243 817 170 622
+                <a href="https://wa.me/5591996156672" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors font-semibold inline-flex items-center gap-1.5">
+                  <span>+55 91 996156672</span>
+                  <span className="text-[10px] bg-emerald-950 text-emerald-400 px-1 rounded border border-emerald-500/40">WhatsApp</span>
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <a href="mailto:direction@kambalemachozi.com" className="hover:text-white transition-colors">
-                  direction@kambalemachozi.com
+                <a href="mailto:directeur@kambalemachozi.com" className="hover:text-white transition-colors">
+                  directeur@kambalemachozi.com
                 </a>
                 <span className="text-slate-600">•</span>
-                <a href="mailto:etsmachozi@gmail.com" className="hover:text-white transition-colors">
-                  etsmachozi@gmail.com
+                <a href="mailto:contact@kambalemachozi.com" className="hover:text-white transition-colors">
+                  contact@kambalemachozi.com
                 </a>
               </div>
             </div>

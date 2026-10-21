@@ -37,7 +37,8 @@ export const NewsDetailPage: React.FC<NewsDetailPageProps> = ({
   const relatedArticles = allArticles.filter((item) => item.id !== article.id);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
   }, [articleId]);
 
   const handleCopyLink = () => {

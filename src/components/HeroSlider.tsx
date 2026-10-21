@@ -218,18 +218,18 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
 
       {/* Official PDF Footer Bar (Bottom Left) — RCCM, ID.NAT, Phone, Email */}
       <div className="hidden lg:flex items-center gap-4 absolute bottom-7 left-8 z-30 text-xs text-slate-200/90 bg-slate-950/65 backdrop-blur-md px-4 py-2 rounded-xl border border-white/15 font-mono">
-        <span>RCCM: 14-A-01204</span>
+        <span>RCCM: CD/KNG/RCCM/20-A-01815</span>
         <span aria-hidden="true">·</span>
-        <span>ID.NAT: 3-93-N55476A</span>
+        <span>ARSP: 3914908074</span>
         <span aria-hidden="true">·</span>
-        <a href="tel:+243819613224" className="hover:text-[#F7C600] transition-colors inline-flex items-center gap-1">
-          <Phone className="w-3 h-3 text-[#F7C600]" />
-          <span>+243 819613224</span>
+        <a href="https://wa.me/5591996156672" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5">
+          <Phone className="w-3 h-3 text-emerald-400" />
+          <span>+55 91 996156672</span>
         </a>
         <span aria-hidden="true">·</span>
-        <a href="mailto:agrokoma@yahoo.fr" className="hover:text-[#F7C600] transition-colors inline-flex items-center gap-1">
+        <a href="mailto:contact@kambalemachozi.com" className="hover:text-[#F7C600] transition-colors inline-flex items-center gap-1">
           <Mail className="w-3 h-3 text-[#D71920]" />
-          <span>agrokoma@yahoo.fr</span>
+          <span>contact@kambalemachozi.com</span>
         </a>
       </div>
 

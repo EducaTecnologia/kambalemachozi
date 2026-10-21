@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Handshake } from 'lucide-react';
+import { X, CheckCircle2, Handshake, MessageSquare } from 'lucide-react';
 import { Logo } from './Logo';
 import { getTranslation } from '../data/content';
 import { Language } from '../types';
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, createWhatsAppUrl, sendToWhatsApp } from '../utils/whatsapp';
 
 interface PartnerModalProps {
   isOpen: boolean;
@@ -12,13 +13,15 @@ interface PartnerModalProps {
 
 export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, currentLang = 'fr' }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState('');
   const t = getTranslation(currentLang).partnerModal;
 
   const [formData, setFormData] = useState({
     organizationName: '',
     contactPerson: '',
     email: '',
-    type: t.typeOptions[0] || 'Collectivité',
+    phone: '',
+    type: t.typeOptions[0] || 'Collectivité / Institution',
     message: '',
   });
 
@@ -26,7 +29,21 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, cur
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const waText =
+      `*PROPOSITION DE PARTENARIAT STRATÉGIQUE — ETS KAMBALE MACHOZI*\n\n` +
+      `🏢 *Organisation / Entreprise:* ${formData.organizationName}\n` +
+      `👤 *Représentant / Nom:* ${formData.contactPerson}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📱 *Téléphone / WhatsApp:* ${formData.phone || 'Non renseigné'}\n` +
+      `🤝 *Type de Partenariat:* ${formData.type}\n\n` +
+      `💬 *Projet / Description:*\n${formData.message}`;
+
+    const waUrl = createWhatsAppUrl(waText);
+    setLastWhatsAppUrl(waUrl);
     setSubmitted(true);
+
+    sendToWhatsApp(waText);
   };
 
   const handleClose = () => {
@@ -107,6 +124,19 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, cur
 
               <div>
                 <label className="block text-[11px] font-bold uppercase text-slate-300 mb-1">
+                  Téléphone / WhatsApp
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+243 ... / +55 ..."
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white text-xs focus:outline-hidden focus:ring-2 focus:ring-[#F7C600]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-bold uppercase text-slate-300 mb-1">
                   {t.typeLabel}
                 </label>
                 <select
@@ -136,11 +166,14 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, cur
 
               <button
                 type="submit"
-                className="w-full mt-2 py-3 bg-[#F7C600] hover:bg-[#e0b400] text-slate-900 text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                className="w-full mt-2 py-3 bg-[#F7C600] hover:bg-[#e0b400] text-slate-900 text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-[0.99]"
               >
                 <Handshake className="w-4 h-4 text-slate-900" />
                 <span>{t.submitBtn}</span>
               </button>
+              <p className="text-[10px] text-center text-slate-400">
+                Transmission automatique sur WhatsApp <span className="text-[#F7C600] font-semibold">{WHATSAPP_DISPLAY}</span>
+              </p>
             </form>
           </div>
         ) : (
@@ -149,15 +182,27 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, cur
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h4 className="text-xl font-bold font-display">{t.successTitle}</h4>
-            <p className="text-xs text-slate-300 max-w-sm mx-auto">
-              {t.successDesc}
+            <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
+              Votre proposition de partenariat a été transmise au numéro officiel WhatsApp <strong className="font-mono text-[#F7C600]">{WHATSAPP_DISPLAY}</strong>.
             </p>
-            <button
-              onClick={handleClose}
-              className="mt-4 px-6 py-2.5 bg-white/20 hover:bg-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
-            >
-              {t.closeBtn}
-            </button>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href={lastWhatsAppUrl || `https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Ouvrir WhatsApp</span>
+              </a>
+              <button
+                onClick={handleClose}
+                className="w-full sm:w-auto px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
+              >
+                {t.closeBtn}
+              </button>
+            </div>
           </div>
         )}
       </div>

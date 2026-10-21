@@ -69,18 +69,28 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleItemClick = (item: typeof navItems[0]) => {
     setMobileMenuOpen(false);
     if (item.isPage && item.pageId) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
       onNavigatePage(item.pageId);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       if (activePage !== 'home') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
         onNavigatePage('home');
-        setTimeout(() => {
-          const el = document.querySelector(item.targetId || '#accueil');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        if (item.targetId && item.targetId !== '#accueil') {
+          setTimeout(() => {
+            const el = document.querySelector(item.targetId);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
       } else {
-        const el = document.querySelector(item.targetId || '#accueil');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (!item.targetId || item.targetId === '#accueil') {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          document.documentElement.scrollTop = 0;
+        } else {
+          const el = document.querySelector(item.targetId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
@@ -101,8 +111,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Zone 1: Official KM Logo */}
             <button
               onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                document.documentElement.scrollTop = 0;
                 onNavigatePage('home');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="shrink-0 focus:outline-hidden rounded-xl text-left cursor-pointer transition-transform hover:scale-[1.02]"
               aria-label="ETS KAMBALE MACHOZI - Accueil"
