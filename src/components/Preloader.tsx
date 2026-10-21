@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { IMAGES, getTranslation } from '../data/content';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { Language } from '../types';
-import { Logo } from './Logo';
 
 interface PreloaderProps {
   currentLang?: Language;
@@ -138,9 +137,14 @@ export const Preloader: React.FC<PreloaderProps> = ({ currentLang = 'fr', onFini
         <div className="relative group max-w-lg w-full flex flex-col items-center">
           <div className="absolute -inset-4 bg-gradient-to-r from-[#1B2A6B]/40 via-[#F7C600]/30 to-[#D71920]/40 rounded-[36px] blur-2xl opacity-90 animate-pulse pointer-events-none" />
 
-          <div className="relative bg-white/95 backdrop-blur-xl rounded-[28px] sm:rounded-[36px] px-8 py-6 sm:px-12 sm:py-8 shadow-[0_30px_70px_rgba(0,0,0,0.7)] border border-white/50 overflow-hidden transform hover:scale-[1.01] transition-transform duration-500">
+          <div className="relative bg-white/95 backdrop-blur-xl rounded-[28px] sm:rounded-[36px] p-6 sm:p-8 shadow-[0_30px_70px_rgba(0,0,0,0.7)] border border-white/50 overflow-hidden transform hover:scale-[1.01] transition-transform duration-500 flex flex-col items-center justify-center">
             <div className="absolute inset-0 -translate-x-full animate-[shimmerSlide_2.8s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none z-10" />
-            <Logo variant="light" layout="stacked" size="xl" showContainer={false} />
+            <img
+              src="https://raw.githubusercontent.com/EducaTecnologia/kambalemachozi/refs/heads/main/public/og-image-square.jpg"
+              alt="ETS KAMBALE MACHOZI"
+              className="w-36 h-36 sm:w-44 sm:h-44 object-contain mx-auto drop-shadow-md rounded-2xl"
+              loading="eager"
+            />
           </div>
         </div>
 
@@ -172,7 +176,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ currentLang = 'fr', onFini
         </div>
 
         <p className="text-[11px] text-slate-400 tracking-wide font-mono">
-          RCCM: 14-A-01204 • ID.NAT: 3-93-N55476A • ARSP/CD/0000018850
+          RCCM: CD/KNG/RCCM/20-A-01815 • ID.NAT: 01-F4300-N63029P • ARSP/CD: 3914908074
         </p>
       </footer>
 
