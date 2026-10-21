@@ -222,7 +222,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
         <span aria-hidden="true">·</span>
         <span>ARSP: 3914908074</span>
         <span aria-hidden="true">·</span>
-        <a href="https://wa.me/5591996156672" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5">
+        <a href="https://api.whatsapp.com/send?phone=5591996156672" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5">
           <Phone className="w-3 h-3 text-emerald-400" />
           <span>+55 91 996156672</span>
         </a>

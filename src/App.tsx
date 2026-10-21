@@ -28,7 +28,7 @@ import { OtherWaysToDonatePage } from './components/OtherWaysToDonatePage';
 
 import { VolunteerModal } from './components/VolunteerModal';
 import { PartnerModal } from './components/PartnerModal';
-import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER } from './utils/whatsapp';
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, createWhatsAppUrl } from './utils/whatsapp';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<Language>('fr');
@@ -230,7 +230,7 @@ export default function App() {
       {/* Floating WhatsApp Quick Action Button (Available on all pages) */}
       <aside aria-label="Contact rapide WhatsApp" className="fixed bottom-6 right-6 z-40 flex items-center gap-2">
         <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Bonjour ETS KAMBALE MACHOZI, je souhaite entrer en contact direct avec vous.')}`}
+          href={createWhatsAppUrl('Bonjour ETS KAMBALE MACHOZI, je souhaite entrer en contact direct avec vous.')}
           target="_blank"
           rel="noopener noreferrer"
           className="group relative flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-white/30 backdrop-blur-sm"

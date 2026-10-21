@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { IMAGES, getTranslation } from '../data/content';
 import { Language } from '../types';
+import { createWhatsAppUrl } from '../utils/whatsapp';
 
 interface OtherWaysToDonatePageProps {
   currentLang: Language;
@@ -350,7 +351,7 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
               <div className="text-xs text-blue-200">{t.secureNote}</div>
             </div>
             <a
-              href="https://wa.me/5591996156672?text=Bonjour%20ETS%20KAMBALE%20MACHOZI%2C%20je%20souhaite%20solliciter%20une%20cotation%20officielle"
+              href={createWhatsAppUrl('Bonjour ETS KAMBALE MACHOZI, je souhaite solliciter une cotation officielle')}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer whitespace-nowrap flex items-center gap-2"
@@ -465,7 +466,7 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
               </p>
             </div>
             <a
-              href="https://wa.me/5591996156672"
+              href={createWhatsAppUrl('Bonjour ETS KAMBALE MACHOZI, je souhaite des renseignements.')}
               target="_blank"
               rel="noopener noreferrer"
               className="py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-bold text-center transition-colors flex items-center justify-center gap-2"

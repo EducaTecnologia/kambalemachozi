@@ -26,12 +26,14 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
     if (!formData.name || !formData.email || !formData.message) return;
 
     const waText =
-      `*NOUVEAU MESSAGE DE CONTACT — ETS KAMBALE MACHOZI*\n\n` +
-      `👤 *Nom / Nome:* ${formData.name}\n` +
-      `📧 *Email:* ${formData.email}\n` +
-      `📱 *Téléphone / WhatsApp:* ${formData.phone || 'Non renseigné'}\n` +
-      `📋 *Sujet / Assunto:* ${formData.subject}\n\n` +
-      `💬 *Message / Mensagem:*\n${formData.message}`;
+      `*NOUVEAU MESSAGE DE CONTACT — ETS KAMBALE MACHOZI*\n` +
+      `─────────────────────────────────────────\n` +
+      `◆ *[PROFIL / NOME]* : ${formData.name}\n` +
+      `◆ *[EMAIL]* : ${formData.email}\n` +
+      `◆ *[TÉLÉPHONE / WHATSAPP]* : ${formData.phone || 'Non renseigné'}\n` +
+      `◆ *[SUJET / ASSUNTO]* : ${formData.subject}\n` +
+      `─────────────────────────────────────────\n` +
+      `● *[MESSAGE / MENSAGEM]* :\n${formData.message}`;
 
     const waUrl = createWhatsAppUrl(waText);
     setLastWhatsAppUrl(waUrl);
@@ -121,7 +123,7 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     Téléphone Direct & WhatsApp
                   </span>
                   <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                    href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-emerald-600 transition-colors font-bold text-slate-900 inline-flex items-center gap-1.5"
@@ -191,7 +193,7 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
 
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a
-                    href={lastWhatsAppUrl || `https://wa.me/${WHATSAPP_NUMBER}`}
+                    href={lastWhatsAppUrl || `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"

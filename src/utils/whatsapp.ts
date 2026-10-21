@@ -8,10 +8,11 @@ export const EMAIL_DIRECTEUR = 'directeur@kambalemachozi.com';
 export const EMAIL_COMMERCIAL = 'contact@kambalemachozi.com';
 
 /**
- * Builds a direct wa.me link with encoded text
+ * Builds a direct WhatsApp link with encoded text.
+ * Uses api.whatsapp.com directly to avoid 302 redirect encoding issues.
  */
 export function createWhatsAppUrl(text: string): string {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}`;
 }
 
 /**

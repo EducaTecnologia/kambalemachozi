@@ -47,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onOpenDonate }) => 
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#F7C600] shrink-0" />
-                <a href="https://wa.me/5591996156672" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors font-semibold inline-flex items-center gap-1.5">
+                <a href="https://api.whatsapp.com/send?phone=5591996156672" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors font-semibold inline-flex items-center gap-1.5">
                   <span>+55 91 996156672</span>
                   <span className="text-[10px] bg-emerald-950 text-emerald-400 px-1 rounded border border-emerald-500/40">WhatsApp</span>
                 </a>
