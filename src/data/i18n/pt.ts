@@ -80,8 +80,11 @@ export const ptTranslations: TranslationSchema = {
     oathDesc: 'Direção Geral : Sr. Bertrand KAMBALE MACHOZI • Empresa 100% de direito congolês • Filiais operacionais em Kolwezi (Lualaba) e Beni / Goma (Nord-Kivu).',
     ngoLegalCert: 'RCCM : 14-A-01204 • ID.NAT : 3-93-N55476A • N° Impôt : A0816671x • ARSP : ARSP/CD/0000018850',
     p1: 'O estabelecimento KAMBALE MACHOZI (KM) é uma sociedade congolesa sediada em Kinshasa (Cité du Fleuve, Comuna de Limete), comprometida com os mais altos padrões de governança, conformidade legal e execução operacional.',
-    p2: 'Visão institucional : Ser o parceiro de referência do Estado congolês e das multinacionais privadas no setor de infraestruturas e serviços essenciais do nosso país. Atuamos em cinco eixos estratégicos que sustentam o desenvolvimento socioeconômico da RDC e fortalecem a soberania nacional.',
+    p2: 'Visão institucional : Ser o parceiro de referência do Estado congolês e das multinacionais privadas no setor de infraestruturas e serviços essenciais do nosso país. Atuamos em seis setores estratégicos que sustentam o desenvolvimento socioeconômico da RDC e fortalecem a soberania nacional.',
     p3: 'Cada área de atuação foi concebida para gerar valor direto para o povo congolês, promovendo a integração territorial, a segurança energética e alimentar, a geração de empregos e a projeção internacional da nossa economia.',
+    leaderName: 'Sr. Bertrand Kambale Machozi',
+    leaderTitle: 'ETS KAMBALE MACHOZI (KM) — Liderança & Visão Estratégica',
+    leaderBio: 'Empresário e executivo congolês à frente da ETS KAMBALE MACHOZI (KM). Tendo exercido por mais de 5 anos como Presidente da Federação das Empresas do Congo (F.E.C.), possui mais de 30 anos de experiência em combustíveis (importação, armazenamento, distribuição), engenharia civil (construção de estradas), agroindústria (fabricação de sabões, agricultura) e fornecimento de gêneros alimentícios às FARDC. Lidera a expansão estratégica da KM através de seus 6 setores essenciais.',
     valuesTitle: 'Nossos Diferenciais & Garantias Institucionais',
     values: [
       {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Truck, Clock, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Award, Truck, Clock, Shield } from 'lucide-react';
 import { Language } from '../types';
 import { getTranslation, IMAGES } from '../data/content';
 
@@ -37,48 +37,25 @@ export const MissionVision: React.FC<MissionVisionProps> = ({ currentLang }) => 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Block: 2 Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
-          {/* Left Column: Executive Vision Card & Photo */}
-          <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-xl">
-              <div className="relative h-72 sm:h-80 w-full overflow-hidden">
-                <img
-                  src={IMAGES.leaderPortrait}
-                  alt="M. Bertrand Kambale Machozi — Direction Générale ETS KAMBALE MACHOZI"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
-
-                {/* Badge Overlay */}
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-900 shadow-md">
-                  {t.badgeRdc}
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#F7C600] block mb-1">
-                    ETS KAMBALE MACHOZI (KM)
-                  </span>
-                  <blockquote className="text-sm sm:text-base font-bold text-white font-display leading-snug">
-                    {t.manifestoQuote}
-                  </blockquote>
-                </div>
-              </div>
-
-              {/* Legal & Executive details underneath image */}
-              <div className="p-5 sm:p-6 bg-slate-50 border-t border-slate-200">
-                <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
-                  {t.oathDesc}
-                </p>
-                <div className="mt-3 pt-3 border-t border-slate-200 flex items-start gap-2 text-xs font-mono font-bold text-[#1B2A6B]">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>{t.ngoLegalCert}</span>
-                </div>
+          {/* Left Column: Full Unobstructed Executive Leader Portrait (Matching Governance section) */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/4.8] sm:aspect-[4/4.5] max-w-sm sm:max-w-md lg:max-w-none mx-auto border-2 border-slate-200/90 shadow-xl bg-slate-100 group">
+              <img
+                src={IMAGES.leaderPortrait}
+                alt="M. Bertrand Kambale Machozi — Direction Générale ETS KAMBALE MACHOZI"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              {/* Elegant subtle badge matching Governance card */}
+              <div className="absolute bottom-4 left-4 bg-[#0A1938]/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold text-[#F7C600] flex items-center gap-2 shadow-lg border border-white/10">
+                <Shield className="w-3.5 h-3.5 text-[#F7C600]" />
+                <span>{currentLang === 'pt' ? 'Direção Geral' : currentLang === 'en' ? 'General Management' : 'Direction Générale'}</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Detailed Corporate Narrative */}
+          {/* Right Column: Detailed Corporate Narrative & Leader Profile */}
           <div className="lg:col-span-7 space-y-6">
             <div>
               <div className="inline-flex items-center gap-2 mb-2.5">
@@ -98,6 +75,25 @@ export const MissionVision: React.FC<MissionVisionProps> = ({ currentLang }) => 
               </p>
               <p>{t.p2}</p>
               <p>{t.p3}</p>
+            </div>
+
+            {/* Strategic Leadership & Executive Bio Box (inserted right after p3) */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm space-y-2.5 transition-all">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#D71920]">
+                  <Award className="w-4 h-4 text-[#F7C600]" />
+                  <span>{t.leaderName || 'Sr. Bertrand Kambale Machozi'}</span>
+                </div>
+                <span className="text-[11px] font-semibold text-slate-500 bg-white px-2.5 py-1 rounded-full border border-slate-200">
+                  {currentLang === 'pt' ? 'Liderança Executiva' : currentLang === 'en' ? 'Executive Leadership' : 'Leadership Exécutif'}
+                </span>
+              </div>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 font-display">
+                {t.leaderTitle || 'ETS KAMBALE MACHOZI (KM) — Liderança & Visão Estratégica'}
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                {t.leaderBio}
+              </p>
             </div>
           </div>
         </div>

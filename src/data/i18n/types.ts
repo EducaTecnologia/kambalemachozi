@@ -43,6 +43,9 @@ export interface TranslationSchema {
     p1: string;
     p2: string;
     p3: string;
+    leaderName?: string;
+    leaderTitle?: string;
+    leaderBio?: string;
     valuesTitle: string;
     values: { title: string; desc: string }[];
   };

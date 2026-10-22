@@ -81,8 +81,11 @@ export const frTranslations: TranslationSchema = {
     oathDesc: 'Direction Générale : M. Bertrand KAMBALE MACHOZI • Société 100% de droit congolais • Antennes opérationnelles à Kolwezi (Lualaba) et Beni / Goma (Nord-Kivu).',
     ngoLegalCert: 'RCCM : 14-A-01204 • ID.NAT : 3-93-N55476A • N° Impôt : A0816671x • ARSP : ARSP/CD/0000018850',
     p1: 'L’établissement KAMBALE MACHOZI (KM) est une société congolaise basée à Kinshasa (Cité du Fleuve, Commune de Limete), attachée aux normes les plus élevées en matière de gouvernance, de conformité et d’exécution opérationnelle.',
-    p2: 'Vision institutionnelle : Être le partenaire de référence de l’État congolais et des multinationales privées dans le secteur des infrastructures et des services essentiels de notre pays. Nous intervenons selon cinq axes stratégiques qui soutiennent le développement socio-économique de la RDC et renforcent la souveraineté nationale.',
+    p2: 'Vision institutionnelle : Être le partenaire de référence de l’État congolais et des multinationales privées dans le secteur des infrastructures et des services essentiels de notre pays. Nous intervenons selon six secteurs stratégiques qui soutiennent le développement socio-économique de la RDC et renforcent la souveraineté nationale.',
     p3: 'Chaque domaine d’action a été conçu pour générer une valeur directe pour le peuple congolais, en favorisant l’intégration territoriale, la sécurité énergétique et alimentaire, la création d’emplois et le rayonnement international de notre économie.',
+    leaderName: 'M. Bertrand Kambale Machozi',
+    leaderTitle: 'ETS KAMBALE MACHOZI (KM) — Leadership & Vision Stratégique',
+    leaderBio: 'Entrepreneur et dirigeant congolais à la tête des ETS KAMBALE MACHOZI (KM). Ayant exercé pendant plus de 5 ans en tant que Président de la Fédération des Entreprises du Congo (F.E.C.), il possède plus de 30 ans d’expérience dans les carburants (importation, stockage, distribution), le génie civil (construction de routes), l’agro-industrie (savonnerie, agriculture) et l’approvisionnement en vivres des FARDC. Il conduit l’expansion stratégique de KM à travers ses 6 secteurs essentiels.',
     valuesTitle: 'Nos Atouts Stratégiques & Garanties Institutionnelles',
     values: [
       {

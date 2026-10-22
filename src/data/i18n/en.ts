@@ -75,8 +75,11 @@ export const enTranslations: TranslationSchema = {
     oathDesc: 'General Management: Mr. Bertrand KAMBALE MACHOZI • 100% Congolese-owned company • Operational branches in Kolwezi (Lualaba) and Beni / Goma (Nord-Kivu).',
     ngoLegalCert: 'RCCM: 14-A-01204 • ID.NAT: 3-93-N55476A • Tax ID: A0816671x • ARSP: ARSP/CD/0000018850',
     p1: 'ETS KAMBALE MACHOZI (KM) is a Congolese company headquartered in Kinshasa (Cité du Fleuve, Limete Municipality), committed to the highest standards of corporate governance, regulatory compliance, and operational execution.',
-    p2: 'Institutional Vision: To be the partner of choice for the Congolese State and private multinationals across our nation’s infrastructure and essential services sectors. We operate across five strategic pillars that drive socio-economic growth and strengthen national sovereignty.',
+    p2: 'Institutional Vision: To be the partner of choice for the Congolese State and private multinationals across our nation’s infrastructure and essential services sectors. We operate across six strategic sectors that drive socio-economic growth and strengthen national sovereignty.',
     p3: 'Every business unit is engineered to deliver direct value to the Congolese people—fostering territorial connectivity, energy and food security, job creation, and the global reach of our economy.',
+    leaderName: 'Mr. Bertrand Kambale Machozi',
+    leaderTitle: 'ETS KAMBALE MACHOZI (KM) — Leadership & Strategic Vision',
+    leaderBio: 'Congolese entrepreneur and executive leading ETS KAMBALE MACHOZI (KM). Having served for more than 5 years as President of the Federation of Enterprises of the Congo (F.E.C.), he brings over 30 years of experience in fuels (import, storage, distribution), civil engineering (road construction), agribusiness (soap manufacturing, agriculture), and military food supplies to the FARDC. He leads KM’s strategic expansion across its 6 essential sectors.',
     valuesTitle: 'Our Key Strengths & Institutional Guarantees',
     values: [
       {
