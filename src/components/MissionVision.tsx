@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Truck, Clock, Shield } from 'lucide-react';
+import { Award, Shield } from 'lucide-react';
 import { Language } from '../types';
 import { getTranslation, IMAGES } from '../data/content';
 
@@ -10,33 +10,11 @@ interface MissionVisionProps {
 export const MissionVision: React.FC<MissionVisionProps> = ({ currentLang }) => {
   const t = getTranslation(currentLang).mission;
 
-  const valueIcons = [ShieldCheck, Award, Truck, Clock];
-  const valueAccents = [
-    'border-l-4 border-l-[#D71920]',
-    'border-l-4 border-l-[#F7C600]',
-    'border-l-4 border-l-[#1B2A6B]',
-    'border-l-4 border-l-emerald-500',
-  ];
-  const valueIconBgs = [
-    'bg-red-50 text-[#D71920]',
-    'bg-amber-50 text-amber-700',
-    'bg-blue-50 text-[#1B2A6B]',
-    'bg-emerald-50 text-emerald-700',
-  ];
-
-  const coreValues = t.values.map((val, idx) => ({
-    icon: valueIcons[idx % valueIcons.length],
-    title: val.title,
-    desc: val.desc,
-    accent: valueAccents[idx % valueAccents.length],
-    iconBg: valueIconBgs[idx % valueIconBgs.length],
-  }));
-
   return (
     <section id="apropos" className="relative py-16 sm:py-24 bg-white text-slate-900 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Block: 2 Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Full Unobstructed Executive Leader Portrait (Matching Governance section) */}
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden aspect-[4/4.8] sm:aspect-[4/4.5] max-w-sm sm:max-w-md lg:max-w-none mx-auto border-2 border-slate-200/90 shadow-xl bg-slate-100 group">
@@ -95,37 +73,6 @@ export const MissionVision: React.FC<MissionVisionProps> = ({ currentLang }) => 
                 {t.leaderBio}
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Bottom Block: 4 Strategic Strengths ("Nos Atouts" from PDF Page 9) */}
-        <div className="pt-4">
-          <div className="text-center mb-10">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
-              {t.valuesTitle}
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coreValues.map((val, idx) => {
-              const Icon = val.icon;
-              return (
-                <div
-                  key={idx}
-                  className={`p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all ${val.accent}`}
-                >
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${val.iconBg}`}>
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-bold text-slate-900 font-display mb-2">
-                    {val.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    {val.desc}
-                  </p>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>

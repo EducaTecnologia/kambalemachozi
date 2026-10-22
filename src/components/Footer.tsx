@@ -123,13 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ currentLang, onOpenDonate }) => 
                   <a href="#programmes" className="hover:text-white transition-colors block py-0.5 leading-snug">{tNav.programs}</a>
                 </li>
                 <li>
-                  <a href="#projets" className="hover:text-white transition-colors block py-0.5 leading-snug">{tNav.projects}</a>
-                </li>
-                <li>
                   <a href="#territoire" className="hover:text-white transition-colors block py-0.5 leading-snug">{tNav.locations}</a>
-                </li>
-                <li>
-                  <a href="#equipe" className="hover:text-white transition-colors block py-0.5 leading-snug">{tNav.team}</a>
                 </li>
                 <li>
                   <a href="#actualites" className="hover:text-white transition-colors block py-0.5 leading-snug">{tNav.news}</a>

@@ -72,7 +72,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'accueil', label: t.home, isPage: false, targetId: '#accueil' },
     { id: 'apropos', label: t.about, isPage: false, targetId: '#apropos' },
     { id: 'programmes', label: t.programs, isPage: false, targetId: '#programmes' },
-    { id: 'projets', label: t.projects, isPage: false, targetId: '#projets' },
     { id: 'soutien', label: t.supporters, isPage: false, targetId: '#partenaires' },
     { id: 'other-ways', label: t.otherWaysToDonate, isPage: true, pageId: 'donate-ways' },
     { id: 'contact', label: t.contact, isPage: false, targetId: '#contact' },

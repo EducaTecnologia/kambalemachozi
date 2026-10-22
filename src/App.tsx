@@ -14,9 +14,7 @@ import { MissionVision } from './components/MissionVision';
 import { ImpactNumbers } from './components/ImpactNumbers';
 import { PillarsSection } from './components/PillarsSection';
 import { HumaneImpactSection } from './components/HumaneImpactSection';
-import { ProjectsCards } from './components/ProjectsCards';
 import { InteractiveMap } from './components/InteractiveMap';
-import { TeamSection } from './components/TeamSection';
 import { PartnersMarquee } from './components/PartnersMarquee';
 import { AerialSupportSection } from './components/AerialSupportSection';
 import { NewsSection } from './components/NewsSection';
@@ -177,19 +175,10 @@ export default function App() {
             onOpenVolunteer={() => setVolunteerModalOpen(true)}
           />
 
-          {/* 8. Featured Projects Cards */}
-          <ProjectsCards
-            currentLang={currentLang}
-            onOpenDonate={handleOpenDonate}
-          />
-
-          {/* 9. Interactive Real Leaflet Map */}
+          {/* 8. Interactive Real Leaflet Map */}
           <InteractiveMap currentLang={currentLang} />
 
-          {/* 10. Leadership & Governance Team */}
-          <TeamSection currentLang={currentLang} />
-
-          {/* 11. Quem Nos Apoia */}
+          {/* 9. Quem Nos Apoia */}
           <PartnersMarquee
             currentLang={currentLang}
             onOpenPartnerModal={() => setPartnerModalOpen(true)}
