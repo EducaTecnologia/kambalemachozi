@@ -17,9 +17,6 @@ const LANGUAGES_META: { code: Language; name: string; label: string }[] = [
   { code: 'fr', name: 'Français', label: 'FR' },
   { code: 'pt', name: 'Português', label: 'PT' },
   { code: 'en', name: 'English', label: 'EN' },
-  { code: 'es', name: 'Español', label: 'ES' },
-  { code: 'ar', name: 'العربية', label: 'AR' },
-  { code: 'zh', name: '中文', label: 'ZH' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({

@@ -55,9 +55,6 @@ export const ImpactNumbers: React.FC<ImpactNumbersProps> = ({ currentLang = 'fr'
   const formatNumber = (val: number) => {
     if (currentLang === 'en') return val.toLocaleString('en-US');
     if (currentLang === 'pt') return val.toLocaleString('pt-BR');
-    if (currentLang === 'es') return val.toLocaleString('es-ES');
-    if (currentLang === 'ar') return val.toLocaleString('ar-EG');
-    if (currentLang === 'zh') return val.toLocaleString('zh-CN');
     return val.toLocaleString('fr-FR');
   };
 

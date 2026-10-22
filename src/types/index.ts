@@ -1,4 +1,4 @@
-export type Language = 'fr' | 'en' | 'es' | 'pt' | 'ar' | 'zh';
+export type Language = 'fr' | 'pt' | 'en';
 
 export interface ProjectItem {
   id: string;

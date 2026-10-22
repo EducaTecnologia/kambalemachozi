@@ -5,9 +5,8 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Lenis from 'lenis';
-import { MessageSquare, PhoneCall } from 'lucide-react';
-
 import { Language } from './types';
+
 import { Preloader } from './components/Preloader';
 import { Navbar } from './components/Navbar';
 import { HeroSlider } from './components/HeroSlider';
@@ -70,11 +69,7 @@ export default function App() {
   // Set document language and direction
   useEffect(() => {
     document.documentElement.lang = currentLang;
-    if (currentLang === 'ar') {
-      document.documentElement.dir = 'rtl';
-    } else {
-      document.documentElement.dir = 'ltr';
-    }
+    document.documentElement.dir = 'ltr';
   }, [currentLang]);
 
   // Initialize Lenis smooth scroll
@@ -245,7 +240,16 @@ export default function App() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-white border border-emerald-600"></span>
           </span>
-          <MessageSquare className="w-5 h-5 fill-white text-emerald-600" />
+          <img
+            src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png"
+            alt="WhatsApp Direct"
+            className="w-6 h-6 object-contain drop-shadow-xs select-none pointer-events-none"
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg";
+            }}
+          />
         </a>
       </aside>
 
