@@ -14,9 +14,7 @@ export const AerialSupportSection: React.FC<AerialSupportSectionProps> = ({
   onOpenDonate,
   onNavigateToOtherWays,
 }) => {
-  const [frequency, setFrequency] = useState<'monthly' | 'once'>('monthly');
   const t = I18N_STRINGS[currentLang].aerialSupport;
-  const tWays = I18N_STRINGS[currentLang].otherWaysToDonate;
 
   return (
     <section className="relative w-full min-h-[460px] sm:min-h-[540px] flex items-center justify-center overflow-hidden py-20 px-4">
@@ -49,34 +47,10 @@ export const AerialSupportSection: React.FC<AerialSupportSectionProps> = ({
           {t.subtitle}
         </p>
 
-        {/* Contract selector (Contrat Cadre vs Commande Spot) */}
-        <div className="inline-flex items-center p-1 bg-black/60 backdrop-blur-md rounded-xl border border-white/20 mb-8">
-          <button
-            onClick={() => setFrequency('monthly')}
-            className={`px-5 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-              frequency === 'monthly'
-                ? 'bg-[#2A3EB1] text-white shadow-md'
-                : 'text-slate-300 hover:text-white'
-            }`}
-          >
-            {tWays.monthly}
-          </button>
-          <button
-            onClick={() => setFrequency('once')}
-            className={`px-5 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-              frequency === 'once'
-                ? 'bg-[#2A3EB1] text-white shadow-md'
-                : 'text-slate-300 hover:text-white'
-            }`}
-          >
-            {tWays.once}
-          </button>
-        </div>
-
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto mb-6">
           <button
-            onClick={() => onOpenDonate(frequency === 'monthly' ? 35 : 50)}
+            onClick={() => onOpenDonate(50)}
             className="w-full sm:w-auto px-8 py-4 bg-[#D71920] hover:bg-[#b81218] active:scale-95 text-white font-black text-sm sm:text-base uppercase tracking-wider rounded-xl shadow-[0_6px_25px_rgba(215,25,32,0.6)] transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
           >
             <FileText className="w-5 h-5" />

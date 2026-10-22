@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      try {
+        const _origFetch = window.fetch.bind(window);
+        let _fetchHolder = _origFetch;
+        Object.defineProperty(window, 'fetch', {
+          get: () => _fetchHolder,
+          set: (v) => { _fetchHolder = v; },
+          configurable: true,
+          enumerable: true
+        });
+      } catch (e) {}
+    </script>
     <title>KAMBALE MACHOZI (KM) — Construire l’Avenir en RDC</title>
     <meta name="description" content="L’établissement KAMBALE MACHOZI (KM) est une société congolaise basée à Kinshasa. Partenaire multisectoriel stratégique : Routes & Travaux Publics (ITPR), Carburant SGS, Rations FARDC, Export Café & Cacao, et Sous-traitance Minière (ARSP)." />
     

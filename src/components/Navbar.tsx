@@ -33,6 +33,21 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const leaveTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
+    }
+    setLangDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    leaveTimerRef.current = setTimeout(() => {
+      setLangDropdownOpen(false);
+    }, 400);
+  };
 
   const t = I18N_STRINGS[currentLang].nav;
   const currentLangMeta = LANGUAGES_META.find((l) => l.code === currentLang) || LANGUAGES_META[0];
@@ -154,8 +169,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div
                 ref={dropdownRef}
                 className="relative"
-                onMouseEnter={() => setLangDropdownOpen(true)}
-                onMouseLeave={() => setLangDropdownOpen(false)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 <button
                   onClick={() => setLangDropdownOpen(!langDropdownOpen)}
@@ -173,33 +188,39 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
 
                 {langDropdownOpen && (
-                  <div className="absolute right-0 mt-1.5 w-36 rounded-2xl bg-slate-900/95 border border-white/15 backdrop-blur-xl shadow-2xl py-2 text-white animate-[fadeIn_0.15s_ease-out] z-50">
-                    <div className="space-y-0.5 px-1.5">
-                      {LANGUAGES_META.map((lang) => {
-                        const isSelected = currentLang === lang.code;
-                        return (
-                          <button
-                            key={lang.code}
-                            onClick={() => {
-                              onSelectLang(lang.code);
-                              setLangDropdownOpen(false);
-                            }}
-                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
-                              isSelected
-                                ? 'bg-white/15 text-[#F7C600]'
-                                : 'text-slate-200 hover:bg-white/10'
-                            }`}
-                          >
-                            <div className="flex items-center gap-2.5">
-                              <FlagIcon code={lang.code} className="w-5 h-3.5 shadow-xs" />
-                              <span className="uppercase tracking-wider text-xs">{lang.label}</span>
-                            </div>
-                            {isSelected && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#F7C600]" />
-                            )}
-                          </button>
-                        );
-                      })}
+                  <div
+                    className="absolute right-0 pt-1 z-50"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <div className="w-36 rounded-2xl bg-slate-900/95 border border-white/15 backdrop-blur-xl shadow-2xl py-2 text-white animate-[fadeIn_0.15s_ease-out]">
+                      <div className="space-y-0.5 px-1.5">
+                        {LANGUAGES_META.map((lang) => {
+                          const isSelected = currentLang === lang.code;
+                          return (
+                            <button
+                              key={lang.code}
+                              onClick={() => {
+                                onSelectLang(lang.code);
+                                setLangDropdownOpen(false);
+                              }}
+                              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
+                                isSelected
+                                  ? 'bg-white/15 text-[#F7C600]'
+                                  : 'text-slate-200 hover:bg-white/10'
+                              }`}
+                            >
+                              <div className="flex items-center gap-2.5">
+                                <FlagIcon code={lang.code} className="w-5 h-3.5 shadow-xs" />
+                                <span className="uppercase tracking-wider text-xs">{lang.label}</span>
+                              </div>
+                              {isSelected && (
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#F7C600]" />
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 )}
