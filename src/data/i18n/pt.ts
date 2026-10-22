@@ -583,6 +583,7 @@ export const ptTranslations: TranslationSchema = {
       '3. Suprimentos & Rações Militares (FARDC)',
       '4. Exportação Internacional de Café & Cacau',
       '5. Mineração & Subcontratação Mineral (Lualaba/Katanga)',
+      '6. Agência Aduaneira & Trânsito (Rwenzori Transit Agency)',
       'Outro assunto institucional'
     ],
     msgLabel: 'Sua mensagem ou especificação técnica *',

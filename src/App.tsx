@@ -26,6 +26,7 @@ import { SocialWorkSection } from './components/SocialWorkSection';
 
 import { VolunteerModal } from './components/VolunteerModal';
 import { PartnerModal } from './components/PartnerModal';
+import { CotationModal } from './components/CotationModal';
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, createWhatsAppUrl } from './utils/whatsapp';
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<string>('news-1');
   const [volunteerModalOpen, setVolunteerModalOpen] = useState(false);
   const [partnerModalOpen, setPartnerModalOpen] = useState(false);
+  const [cotationModalOpen, setCotationModalOpen] = useState(false);
 
   const lenisRef = useRef<Lenis | null>(null);
 
@@ -98,8 +100,7 @@ export default function App() {
   }, []);
 
   const handleOpenDonate = (_amount?: number) => {
-    setActivePage('donate-ways');
-    scrollToTopInstant();
+    setCotationModalOpen(true);
   };
 
   const handleNavigatePage = (page: string) => {
@@ -252,6 +253,12 @@ export default function App() {
       <PartnerModal
         isOpen={partnerModalOpen}
         onClose={() => setPartnerModalOpen(false)}
+        currentLang={currentLang}
+      />
+
+      <CotationModal
+        isOpen={cotationModalOpen}
+        onClose={() => setCotationModalOpen(false)}
         currentLang={currentLang}
       />
     </div>

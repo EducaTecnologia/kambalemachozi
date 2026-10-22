@@ -567,6 +567,7 @@ export const enTranslations: TranslationSchema = {
       '3. Military Rations & Food Supply (FARDC)',
       '4. International Coffee & Cocoa Export',
       '5. Mining Subcontracting (Lualaba/Katanga)',
+      '6. Customs Clearance & Transit Agency (Rwenzori Transit Agency)',
       'Other Institutional Inquiry'
     ],
     msgLabel: 'Your message or technical specifications *',

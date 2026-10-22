@@ -584,6 +584,7 @@ export const frTranslations: TranslationSchema = {
       '3. Fournitures & Rations Militaires (FARDC)',
       '4. Exportation Internationale de Café & Cacao',
       '5. Exploitation & Sous-Traitance Minière (Lualaba/Katanga)',
+      '6. Agence en Douane & Transit (Rwenzori Transit Agency)',
       'Autre demande institutionnelle'
     ],
     msgLabel: 'Votre message ou cahier des charges *',
