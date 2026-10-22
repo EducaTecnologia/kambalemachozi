@@ -25,6 +25,7 @@ import { NewsDetailPage } from './components/NewsDetailPage';
 import { ContactNewsletter } from './components/ContactNewsletter';
 import { Footer } from './components/Footer';
 import { OtherWaysToDonatePage } from './components/OtherWaysToDonatePage';
+import { SocialWorkSection } from './components/SocialWorkSection';
 
 import { VolunteerModal } from './components/VolunteerModal';
 import { PartnerModal } from './components/PartnerModal';
@@ -205,6 +206,9 @@ export default function App() {
             onOpenDonate={handleOpenDonate}
             onNavigateToOtherWays={() => handleNavigatePage('donate-ways')}
           />
+
+          {/* 12.5. Social & Community Work Section (RTR Radio & Youth Education) */}
+          <SocialWorkSection currentLang={currentLang} />
 
           {/* 13. News & Dispatches from the ground */}
           <NewsSection

@@ -14,7 +14,7 @@ export const frTranslations: TranslationSchema = {
   nav: {
     home: 'Accueil',
     about: 'Entreprise',
-    programs: 'Nos 5 Secteurs',
+    programs: 'Nos 6 Secteurs',
     projects: 'Opérations',
     locations: 'Présence en RDC',
     team: 'Direction',
@@ -34,24 +34,29 @@ export const frTranslations: TranslationSchema = {
         tag: 'Routes & Travaux Publics'
       },
       {
-        title: 'Secteur 2 : Fournisseur de carburant certifié SGS (+150 000L)',
+        title: 'Secteur 2 : Fournisseur de carburant (30 ans d’expérience, import, stockage, distribution)',
         location: 'Corridor Dar es Salaam & Beira → Kolwezi / Kisanfu',
         tag: 'Distribution d’Hydrocarbures'
       },
       {
-        title: 'Secteur 3 : Fournisseur officiel de rations militaires aux FARDC',
+        title: 'Secteur 3 : Fournisseur officiel de denrées alimentaires et rations aux FARDC',
         location: 'Ministère de la Défense Nationale — Tous Fronts RDC',
         tag: 'Logistique & Défense'
       },
       {
-        title: 'Secteur 4 : Exportateur international de Café & Cacao congolais',
+        title: 'Secteur 4 : Agro-industrie, fabrication de savons & export café/cacao',
         location: 'Nord-Kivu, Ituri, Kasaï → Europe, Dubaï, Turquie, USA',
-        tag: 'Agro-Industrie Internationale'
+        tag: 'Agro-Industrie & Savons'
       },
       {
         title: 'Secteur 5 : Exploitation minière & sous-traitance (ARSP)',
         location: 'Lualaba, Haut-Katanga & Nord-Kivu',
         tag: 'Mines & Sous-Traitance'
+      },
+      {
+        title: 'Secteur 6 : Agence en douane — Rwenzori Transit Agency',
+        location: 'Frontières RDC, Kinshasa, Lualaba & Grands Lacs',
+        tag: 'Rwenzori Transit Agency'
       }
     ]
   },
@@ -135,63 +140,74 @@ export const frTranslations: TranslationSchema = {
   },
   pillars: {
     sectionKicker: 'SECTEURS & ACTIONS STRATÉGIQUES',
-    title: 'Cinq axes stratégiques pour la souveraineté et le développement de la RDC.',
+    title: 'Six axes stratégiques pour la souveraineté et le développement de la RDC.',
     sub: 'Chaque secteur d’intervention d’ETS KAMBALE MACHOZI soutient l’intégration territoriale, la sécurité énergétique et alimentaire, et le rayonnement international de l’économie congolaise.',
     donateToPillar: 'Demander une cotation',
     items: [
       {
         id: 'secteur-routes',
         title: '1. Construction et Réhabilitation des Routes',
-        desc: 'Sous autorisation officielle du Ministère de l’ITPR (Infrastructures et Travaux publics), nous réalisons la construction, la réhabilitation et l’entretien des routes, des ponts, des ponceaux et des caniveaux sur toute l’étendue de la RDC.',
-        tag: 'Autorisation Ministère ITPR',
+        desc: 'Ingénierie civile et construction de routes : sous autorisation officielle du Ministère de l’ITPR, nous réalisons la construction, la réhabilitation et l’entretien des routes, des ponts, des ponceaux et des caniveaux sur toute l’étendue de la RDC.',
+        tag: 'Génie civil — Construction de routes',
         keyPoints: [
           'Terrassement, remblayage, compactage et pavage sur terre et asphalte',
           'Construction d’ouvrages d’art, ponts, ponceaux et collecteurs de drainage',
-          'Fourniture d’engins lourds : tracteurs à chenilles, niveleuses, compacteurs, camions-bennes (Kinshasa, Lualaba, Haut-Katanga, Nord-Kivu, Kasaï)'
+          'Fourniture d’engins lourds : tracteurs à chenilles, niveleuses, compacteurs, camions-bennes'
         ]
       },
       {
         id: 'secteur-carburant',
         title: '2. Fournisseur de Carburant & Lubrifiants',
-        desc: 'Distribution de carburant de qualité supérieure en grande quantité : Diesel AGO/DDO, Essence PMS, Lubrifiants et Jet A1 (sur commande spéciale), par importation directe de Tanzanie (Dar es Salaam) et du Mozambique (Beira).',
-        tag: 'Certifié SGS & Conforme ADR',
+        desc: 'Plus de 30 ans d’expérience en importation, stockage et distribution de carburant de qualité supérieure : Diesel AGO/DDO, Essence PMS, Lubrifiants et Jet A1 certifié SGS.',
+        tag: '30 ans d’expérience • Import, Stockage, Distribution',
         keyPoints: [
-          'Carburant certifié SGS, testé en laboratoire (densité, teneur en eau, soufre), garanti sans mélange',
-          'Stock stratégique de plus de 150 000 litres et flotte de camions-citernes en acier inoxydable (30 000 à 40 000L) avec suivi GPS',
-          'Livraison sous 24/48 heures sur les sites miniers du Lualaba (Kisanfu, Kolwezi) pour sociétés minières, BTP, ONG et transporteurs'
+          'Carburant certifié SGS, testé en laboratoire (densité, eau, soufre), garanti sans mélange',
+          'Stock stratégique de plus de 150 000 litres et flotte de camions-citernes inox ADR avec suivi GPS',
+          'Livraison sous 24/48 heures sur les sites miniers du Lualaba (Kisanfu, Kolwezi)'
         ]
       },
       {
         id: 'secteur-fardc',
-        title: '3. Fournisseur de Rations Militaires (FARDC)',
-        desc: 'Fournisseur officiel agréé par le Ministère de la Défense nationale pour l’approvisionnement stratégique en vivres et rations de combat des Forces Armées de la République Démocratique du Congo (FARDC).',
-        tag: 'Autorisation Défense Nationale',
+        title: '3. Fournisseur de Denrées Alimentaires & Rations (FARDC)',
+        desc: 'Partenaire des FARDC (Forces Armées de la RDC) en tant que fournisseur officiel de gêneros alimentícios, denrées et rations de combat pour la souveraineté nationale.',
+        tag: 'Fournisseur Officiel FARDC',
         keyPoints: [
-          'Gamme complète : riz, haricots, maïs, farine de manioc, huile, sel, sucre, conserves, eau et biscuits énergétiques, rations de combat',
-          'Capacité d’approvisionnement de grande envergure pour tous les fronts et zones opérationnelles',
-          'Respect strict de la chaîne du froid, des normes d’hygiène et entreposage hautement sécurisé'
+          'Approvisionnement en denrées alimentaires, vivres frais et secs pour les forces armées',
+          'Riz, haricots, maïs, farine, huile, sel, sucre, conserves et rations de combat',
+          'Respect rigoureux de la chaîne du froid et entreposage hautement sécurisé'
         ]
       },
       {
         id: 'secteur-agro',
-        title: '4. Exportateur International de Café et de Cacao',
-        desc: 'Filière d’agro-industrie internationale valorisant les meilleures origines congolaises : Café Arabica (Nord-Kivu, Ituri), Café Robusta (Kasaï, Équateur) et fèves de cacao Forastero et Trinitario certifiées biologiques sur demande.',
-        tag: 'Export Europe, Dubaï, Turquie & USA',
+        title: '4. Agro-industrie, Fabrication de Savons & Export Café/Cacao',
+        desc: 'Agronegócio : fabrication de savons et agriculture, combinée à l’exportation internationale de Café Arabica, Robusta et fèves de cacao congolaises de premier choix.',
+        tag: 'Fabrication de Savons — Agriculture & Export',
         keyPoints: [
-          'Collecte directe en collaboration étroite avec les coopératives agricoles congolaises',
-          'Contrôle rigoureux de la qualité (taux d’humidité, degré, calibrage) et conditionnement en sacs de jute de 60 kg',
-          'Exportation par conteneur via Kinshasa, Matadi et Dar es Salaam vers l’Europe (Rotterdam, Anvers), Dubaï, la Turquie et les USA'
+          'Fabrication locale de savons et initiatives agricoles durables',
+          'Collecte et valorisation des productions agricoles des coopératives congolaises',
+          'Exportation par conteneur vers l’Europe, Dubaï, la Turquie et les USA'
         ]
       },
       {
         id: 'secteur-mines',
         title: '5. L’Exploitation Minière et Sous-Traitance en RDC',
-        desc: 'Opérations minières et sous-traitance industrielle au Lualaba, dans le Haut-Katanga et au Nord-Kivu (ARSP/CD/0000018850), avec pour objectif d’être le partenaire de confiance de Kisanfu Mining, Mutanda et Kamoto.',
-        tag: 'Lualaba • Haut-Katanga • Nord-Kivu',
+        desc: 'Opérations minières et sous-traitance industrielle au Lualaba, dans le Haut-Katanga et au Nord-Kivu (ARSP/CD/0000018850), partenaire de confiance pour les grands opérateurs.',
+        tag: 'Lualaba • Haut-Katanga • ARSP',
         keyPoints: [
-          'Approvisionnement et logistique minière intégrée (carburant certifié SGS, équipements lourds, pièces détachées)',
-          'Sous-traitance minière de génie civil : ouverture et entretien de routes minières, préparation de sites',
-          'Commerce du cuivre et du cobalt en partenariat et soutien structurant à l’agriculture artisanale'
+          'Logistique minière intégrée (carburant SGS, équipements lourds, pièces détachées)',
+          'Sous-traitance de génie civil : ouverture et entretien de routes minières',
+          'Commerce du cuivre et du cobalt en partenariat et soutien à l’économie locale'
+        ]
+      },
+      {
+        id: 'secteur-douane',
+        title: '6. Agence en Douane — Rwenzori Transit Agency',
+        desc: 'Agência aduaneira : Rwenzori Transit Agency, spécialisée dans le transit, le dédouanement et la logistique aux frontières de la RDC pour sécuriser et accélérer tous vos flux d’import-export.',
+        tag: 'Rwenzori Transit Agency',
+        keyPoints: [
+          'Dédouanement rapide et conformité douanière aux frontières terrestres et portuaires',
+          'Gestion experte des formalités d’importation de carburant, engins et marchandises',
+          'Sécurisation de la chaîne logistique internationale et transit transfrontalier'
         ]
       }
     ]
@@ -348,7 +364,7 @@ export const frTranslations: TranslationSchema = {
         role: 'Directeur Général / CEO',
         location: 'Siège Social : Cité du Fleuve, Limete, Kinshasa – RDC',
         image: kmBertrandCeoImg,
-        bio: 'Dirigeant d’entreprise congolais à la tête de l’établissement KAMBALE MACHOZI (KM). Attaché aux normes les plus élevées en matière de gouvernance, de conformité fiscale, commerciale et sociale, il conduit le déploiement stratégique de l’entreprise dans les cinq secteurs clés : routes et travaux publics (ITPR), fourniture de carburant certifié SGS, rations militaires aux FARDC, exportation internationale de café/cacao et sous-traitance minière au Lualaba.',
+        bio: 'Dirigeant d’entreprise congolais à la tête de l’établissement KAMBALE MACHOZI (KM). Ayant exercé plus de 5 ans comme Président de la Fédération des Entreprises du Congo (F.E.C.), il conjugue plus de 30 ans d’expérience dans les hydrocarbures (importation, stockage, distribution), l’ingénierie civile (construction de routes), l’agro-industrie (fabrication de savons, agriculture) et l’approvisionnement des FARDC en denrées alimentaires. Il pilote le développement stratégique de KM à travers ses 6 secteurs clés.',
         quote: 'Nous espérons contribuer de manière significative au développement de notre pays, grâce à un engagement envers l’excellence et la technologie.'
       },
       {
