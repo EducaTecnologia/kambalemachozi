@@ -19,14 +19,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   const touchStartX = useRef<number | null>(null);
 
   const t = I18N_STRINGS[currentLang].hero;
+  const isPt = currentLang === 'pt';
+  const isEn = currentLang === 'en';
 
   const slides = [
     {
       id: 0,
-      kicker: t.kicker,
-      title: t.slide1Title,
-      subtitle: t.slide1Sub,
-      cta1Text: t.slide1Cta1,
+      kicker: isPt ? 'SETOR 1 : CONSTRUIR O FUTURO NA RDC' : isEn ? 'SECTOR 1 : BUILDING THE FUTURE IN DRC' : 'SECTEUR 1 : CONSTRUIRE L’AVENIR EN RDC',
+      title: isPt ? 'Construção & reabilitação de estradas (ITPR)' : isEn ? 'Road Construction & Rehabilitation (ITPR)' : 'Construction & réhabilitation des routes (ITPR)',
+      subtitle: isPt
+        ? 'Engenharia civil, terraplenagem, pontes, bueiros e canais de drenagem em toda a extensão da República Democrática do Congo.'
+        : isEn
+        ? 'Civil engineering, earthworks, bridges, culverts and drainage channels throughout the Democratic Republic of the Congo.'
+        : 'Ingénierie civile, terrassement, ponts, ponceaux et caniveaux sur toute l’étendue de la République Démocratique du Congo.',
+      cta1Text: isPt ? 'Conhecer o setor 1' : isEn ? 'Explore Sector 1' : 'Découvrir le secteur 1',
       cta1Link: '#programmes',
       cta1Variant: 'navy',
       cta2Text: t.slide1Cta2,
@@ -36,11 +42,15 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
     },
     {
       id: 1,
-      kicker: 'SECTEUR CARBURANT & LOGISTIQUE PÉTROLIÈRE — CERTIFIÉ SGS',
-      title: t.slide2Title,
-      subtitle: t.slide2Sub,
-      cta1Text: t.slide2Cta,
-      cta1Link: '#projets',
+      kicker: isPt ? 'SETOR 2 : COMBUSTÍVEIS & LOGÍSTICA MINERAL' : isEn ? 'SECTOR 2 : FUELS & MINERAL LOGISTICS' : 'SECTEUR 2 : CARBURANT & LOGISTIQUE PÉTROLIÈRE',
+      title: isPt ? '30+ anos de experiência: Importação, Armazenamento, Distribuição' : isEn ? '30+ Years Experience: Import, Storage, Distribution' : 'Plus de 30 ans d’expérience : Import, Stockage, Distribution',
+      subtitle: isPt
+        ? 'Diesel AGO/DDO, Gasolina PMS, Lubrificantes e Jet A1 certificados pela SGS. Estoque estratégico de +150.000L e entrega em 24/48h.'
+        : isEn
+        ? 'Diesel AGO/DDO, PMS Gasoline, Lubricants and SGS-certified Jet A1. Strategic stock of +150,000L and 24/48h delivery.'
+        : 'Diesel AGO/DDO, Essence PMS, Lubrifiants et Jet A1 certifiés SGS. Stock stratégique de +150 000L et livraison sous 24/48h.',
+      cta1Text: isPt ? 'Conhecer o setor 2' : isEn ? 'Explore Sector 2' : 'Découvrir le secteur 2',
+      cta1Link: '#programmes',
       cta1Variant: 'primary',
       cta2Text: t.slide1Cta2,
       cta2Action: onOpenDonate,
@@ -49,16 +59,88 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
     },
     {
       id: 2,
-      kicker: 'MINES ARSP • RATIONS FARDC • EXPORT CAFÉ & CACAO',
-      title: t.slide3Title,
-      subtitle: t.slide3Sub,
-      cta1Text: t.slide3Cta,
-      cta1Link: '#apropos',
+      kicker: isPt ? 'SETOR 3 : DEFESA NACIONAL & SOBERANIA' : isEn ? 'SECTOR 3 : NATIONAL DEFENSE & SOVEREIGNTY' : 'SECTEUR 3 : DÉFENSE NATIONALE & SOUVERAINETÉ',
+      title: isPt ? 'Fornecedor oficial de gêneros alimentícios e rações às FARDC' : isEn ? 'Official Supplier of Food & Rations to FARDC' : 'Fournisseur officiel de denrées alimentaires et rations aux FARDC',
+      subtitle: isPt
+        ? 'Abastecimento estratégico de mantimentos, vivres e rações de combate para as Forças Armadas da RDC em todas as frentes.'
+        : isEn
+        ? 'Strategic supply of food provisions, fresh/dry supplies and combat rations for the Armed Forces of the DRC on all fronts.'
+        : 'Approvisionnement stratégique en vivres frais, secs et rations de combat pour les Forces Armées de la RDC sur tous les fronts.',
+      cta1Text: isPt ? 'Conhecer o setor 3' : isEn ? 'Explore Sector 3' : 'Découvrir le secteur 3',
+      cta1Link: '#programmes',
+      cta1Variant: 'primary',
+      cta2Text: t.slide1Cta2,
+      cta2Action: onOpenDonate,
+      image: IMAGES.fardcRations,
+      alt: 'Fourniture officielle de denrées alimentaires et rations aux FARDC par KAMBALE MACHOZI',
+    },
+    {
+      id: 3,
+      kicker: isPt ? 'SETOR 4 : AGROINDÚSTRIA & EXPORTAÇÃO' : isEn ? 'SECTOR 4 : AGRO-INDUSTRY & EXPORT' : 'SECTEUR 4 : AGRO-INDUSTRIE & EXPORTATION',
+      title: isPt ? 'Agricultura, fabricação de sabões & exportação de café/cacau' : isEn ? 'Agriculture, Soap Manufacturing & Coffee/Cocoa Export' : 'Agriculture, fabrication de savons & export café/cacao',
+      subtitle: isPt
+        ? 'Valorização dos terroirs congoleses, fabricação local de sabões e exportação internacional para a Europa, Dubai e EUA.'
+        : isEn
+        ? 'Valorization of Congolese terroirs, local soap manufacturing, and international export to Europe, Dubai and the USA.'
+        : 'Valorisation des terroirs congolais, fabrication locale de savons et exportation internationale vers l’Europe, Dubaï et les USA.',
+      cta1Text: isPt ? 'Conhecer o setor 4' : isEn ? 'Explore Sector 4' : 'Découvrir le secteur 4',
+      cta1Link: '#programmes',
+      cta1Variant: 'primary',
+      cta2Text: t.slide1Cta2,
+      cta2Action: onOpenDonate,
+      image: IMAGES.projectAgri,
+      alt: 'Exportation de café et cacao et agro-industrie par ETS KAMBALE MACHOZI',
+    },
+    {
+      id: 4,
+      kicker: isPt ? 'SETOR 5 : MINERAÇÃO & SUBCONTRATAÇÃO ARSP' : isEn ? 'SECTOR 5 : MINING & ARSP SUBCONTRACTING' : 'SECTEUR 5 : MINES & SOUS-TRAITANCE ARSP',
+      title: isPt ? 'Mineração & Subcontratação Especializada no Lualaba' : isEn ? 'Specialized Mining & Subcontracting in Lualaba' : 'L’Exploitation Minière & Sous-Traitance au Lualaba',
+      subtitle: isPt
+        ? 'Parceiro estratégico de confiança de grandes mineradoras (Kisanfu, Mutanda, Kamoto) sob credenciamento ARSP/CD/0000018850.'
+        : isEn
+        ? 'Trusted strategic partner of major mining companies (Kisanfu, Mutanda, Kamoto) under ARSP/CD/0000018850.'
+        : 'Partenaire de confiance des géants miniers (Kisanfu, Mutanda, Kamoto) en RDC sous agrément ARSP/CD/0000018850.',
+      cta1Text: isPt ? 'Conhecer o setor 5' : isEn ? 'Explore Sector 5' : 'Découvrir le secteur 5',
+      cta1Link: '#programmes',
       cta1Variant: 'primary',
       cta2Text: t.slide1Cta2,
       cta2Action: onOpenDonate,
       image: IMAGES.heroHealth,
-      alt: 'Exploitation et sous-traitance minière à Kolwezi et Lualaba en République Démocratique du Congo',
+      alt: 'Exploitation et sous-traitance minière à Kolwezi et Lualaba en RDC',
+    },
+    {
+      id: 5,
+      kicker: isPt ? 'SETOR 6 : TRÂNSITO & ALFÂNDEGA' : isEn ? 'SECTOR 6 : CUSTOMS & TRANSIT' : 'SECTEUR 6 : TRANSIT & DOUANE',
+      title: isPt ? 'Agência Aduaneira — Rwenzori Transit Agency' : isEn ? 'Customs Agency — Rwenzori Transit Agency' : 'Agence en douane — Rwenzori Transit Agency',
+      subtitle: isPt
+        ? 'Especialista em trânsito, desembaraço aduaneiro e logística nas fronteiras da RDC para assegurar e acelerar os fluxos import-export.'
+        : isEn
+        ? 'Specialist in transit, customs clearance, and logistics at DRC borders to secure and accelerate import-export flows.'
+        : 'Spécialiste du transit, dédouanement et logistique aux frontières de la RDC pour sécuriser et accélérer vos flux import-export.',
+      cta1Text: isPt ? 'Conhecer o setor 6' : isEn ? 'Explore Sector 6' : 'Découvrir le secteur 6',
+      cta1Link: '#programmes',
+      cta1Variant: 'primary',
+      cta2Text: t.slide1Cta2,
+      cta2Action: onOpenDonate,
+      image: IMAGES.aidDistributionAerial,
+      alt: 'Rwenzori Transit Agency — Agence en douane et logistique frontalière',
+    },
+    {
+      id: 6,
+      kicker: isPt ? 'TRABALHO SOCIAL & COMUNITÁRIO' : isEn ? 'SOCIAL & COMMUNITY WORK' : 'TRAVAUX SOCIAUX & COMMUNAUTAIRES',
+      title: isPt ? 'Rádio Televisão Rwanzururu (RTR) & Educação da Juventude' : isEn ? 'Rwanzururu Radio Television (RTR) & Youth Education' : 'Rádio Televisão Rwanzururu (RTR) & Éducation de la Jeunesse',
+      subtitle: isPt
+        ? 'Viabilização da comunicação comunitária e apoio ao ensino primário e secundário para a formação e o futuro da juventude congolesa.'
+        : isEn
+        ? 'Enabling community communication and supporting primary and secondary education for the training and future of Congolese youth.'
+        : 'Viabilisation de la communication communautaire et soutien à l’enseignement primaire et secondaire pour l’avenir de la jeunesse congolaise.',
+      cta1Text: isPt ? 'Ver trabalho social' : isEn ? 'View Social Work' : 'Voir les travaux sociaux',
+      cta1Link: '#travail-social',
+      cta1Variant: 'primary',
+      cta2Text: t.slide1Cta2,
+      cta2Action: onOpenDonate,
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjtPvXGRLx9asmvlzwG063ZOYTHCccozQfAG9G0p16yFOUVXd7ei4TG5gW&s=10',
+      alt: 'Travaux sociaux et communautaires : Rádio Televisão Rwanzururu et éducation',
     },
   ];
 
@@ -261,12 +343,12 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
         </button>
 
-        <div className="flex items-center gap-2 px-2">
+        <div className="flex items-center gap-1.5 px-2 overflow-x-auto max-w-[200px] sm:max-w-none">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => goToSlide(i)}
-              className={`h-2 transition-all rounded-full cursor-pointer ${
+              className={`h-2 transition-all rounded-full cursor-pointer shrink-0 ${
                 i === currentSlide
                   ? 'w-7 bg-[#F7C600]'
                   : 'w-2 bg-white/30 hover:bg-white/60'
