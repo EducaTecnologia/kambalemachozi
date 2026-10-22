@@ -130,7 +130,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose, cur
                 </label>
                 <input
                   type="tel"
-                  placeholder="+243 ... / +55 ..."
+                  placeholder="+243 ..."
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white text-xs focus:outline-hidden focus:ring-2 focus:ring-[#F7C600]"

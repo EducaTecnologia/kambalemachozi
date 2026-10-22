@@ -394,10 +394,10 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
                 <div><strong>Entité :</strong> ETS KAMBALE MACHOZI (KM)</div>
                 <div><strong>Directeur Général :</strong> M. Bertrand Kambale Machozi</div>
                 <div><strong>Adresse :</strong> Av. Colonel Ebeya n°1746/A, C/Gombe, Kinshasa, RDC</div>
-                <div><strong>Téléphone Direct & WhatsApp :</strong> +55 91 996156672</div>
+                <div><strong>Téléphone Direct & WhatsApp :</strong> +243 998298175</div>
               </div>
               <button
-                onClick={() => handleCopy('ETS KAMBALE MACHOZI (KM) - Av. Colonel Ebeya n°1746/A, C/Gombe, Kinshasa, RDC - Tel: +55 91 996156672', 'hq')}
+                onClick={() => handleCopy('ETS KAMBALE MACHOZI (KM) - Av. Colonel Ebeya n°1746/A, C/Gombe, Kinshasa, RDC - Tel: +243 998298175', 'hq')}
                 className="w-full py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 {copiedKey === 'hq' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
@@ -416,11 +416,11 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
               <div className="text-xs text-slate-600 space-y-1.5">
                 <div><strong>Email Direction :</strong> directeur@kambalemachozi.com</div>
                 <div><strong>Email Commercial :</strong> contact@kambalemachozi.com</div>
-                <div><strong>WhatsApp Direct :</strong> +55 91 996156672</div>
+                <div><strong>WhatsApp Direct :</strong> +243 998298175</div>
                 <div><strong>Hub Minier & Export :</strong> Kolwezi (Lualaba) • Goma • Matadi</div>
               </div>
               <button
-                onClick={() => handleCopy('directeur@kambalemachozi.com | contact@kambalemachozi.com | +55 91 996156672', 'emails')}
+                onClick={() => handleCopy('directeur@kambalemachozi.com | contact@kambalemachozi.com | +243 998298175', 'emails')}
                 className="w-full py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 {copiedKey === 'emails' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
@@ -472,7 +472,7 @@ export const OtherWaysToDonatePage: React.FC<OtherWaysToDonatePageProps> = ({
               className="py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-bold text-center transition-colors flex items-center justify-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>{t.inKindBtn} (+55 91 996156672)</span>
+              <span>{t.inKindBtn} (+243 998298175)</span>
             </a>
           </div>
         </div>

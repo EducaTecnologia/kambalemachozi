@@ -7,8 +7,8 @@
  * - Eliminates all api.whatsapp.com links to prevent ERR_CONNECTION_REFUSED
  */
 
-export const WHATSAPP_NUMBER = '5591996156672';
-export const WHATSAPP_DISPLAY = '+55 91 996156672';
+export const WHATSAPP_NUMBER = '243998298175';
+export const WHATSAPP_DISPLAY = '+243 998298175';
 export const EMAIL_DIRECTEUR = 'directeur@kambalemachozi.com';
 export const EMAIL_COMMERCIAL = 'contact@kambalemachozi.com';
 

@@ -261,7 +261,7 @@ export const ContactNewsletter: React.FC<ContactNewsletterProps> = ({ currentLan
                     </label>
                     <input
                       type="tel"
-                      placeholder="+243 ... / +55 ..."
+                      placeholder="+243 ..."
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#1B2A6B]"
