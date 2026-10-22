@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Zone 2: Navigation Links */}
             <nav
-              className="hidden lg:flex items-center gap-6 xl:gap-7 text-sm font-semibold tracking-normal text-white"
+              className="hidden lg:flex items-center gap-3 xl:gap-4 text-[13px] font-semibold tracking-normal text-white"
               aria-label="Navigation principale"
             >
               {navItems.map((item) => {
@@ -164,7 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </nav>
 
             {/* Zone 3: Actions (Language Dropdown + Primary Quote CTA) */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               {/* Language Selector Dropdown */}
               <div
                 ref={dropdownRef}
@@ -174,14 +174,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <button
                   onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold border border-white/25 bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all cursor-pointer shadow-xs"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-bold border border-white/25 bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all cursor-pointer shadow-xs"
                   aria-expanded={langDropdownOpen}
                   aria-label="Sélectionner la langue"
                 >
-                  <FlagIcon code={currentLangMeta.code} className="w-5 h-3.5 shadow-xs" />
+                  <FlagIcon code={currentLangMeta.code} className="w-4 h-3 shadow-xs" />
                   <span className="uppercase tracking-wider text-xs font-extrabold">{currentLangMeta.label}</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 text-slate-300 transition-transform duration-200 ${
+                    className={`w-3 h-3 text-slate-300 transition-transform duration-200 ${
                       langDropdownOpen ? 'rotate-180' : ''
                     }`}
                   />
@@ -229,9 +229,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Red Request Quote CTA */}
               <button
                 onClick={onOpenDonate}
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-[#D71920] hover:bg-[#b81218] active:scale-95 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-[0_4px_16px_rgba(215,25,32,0.45)] transition-all cursor-pointer whitespace-nowrap"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#D71920] hover:bg-[#b81218] active:scale-95 text-white text-[11px] font-bold uppercase tracking-wider rounded-xl shadow-[0_4px_16px_rgba(215,25,32,0.45)] transition-all cursor-pointer whitespace-nowrap"
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-3.5 h-3.5" />
                 <span>{t.donate}</span>
               </button>
 

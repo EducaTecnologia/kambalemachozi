@@ -232,24 +232,20 @@ export default function App() {
       />
 
       {/* Floating WhatsApp Quick Action Button (Available on all pages) */}
-      <aside aria-label="Contact rapide WhatsApp" className="fixed bottom-6 right-6 z-40 flex items-center gap-2">
+      <aside aria-label="Contact rapide WhatsApp" className="fixed bottom-6 right-6 z-40 flex items-center">
         <a
           href={createWhatsAppUrl('Bonjour ETS KAMBALE MACHOZI, je souhaite entrer en contact direct avec vous.')}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-white/30 backdrop-blur-sm"
+          className="group relative flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-white/30 backdrop-blur-sm"
           title={`WhatsApp Direct: ${WHATSAPP_DISPLAY}`}
         >
           {/* Pulsing indicator */}
-          <span className="relative flex h-3 w-3">
+          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-white border border-emerald-600"></span>
           </span>
           <MessageSquare className="w-5 h-5 fill-white text-emerald-600" />
-          <div className="hidden sm:flex flex-col text-left leading-none">
-            <span className="text-[10px] font-medium text-emerald-100 uppercase tracking-wider">WhatsApp Direct</span>
-            <span className="text-xs font-bold font-mono tracking-tight">{WHATSAPP_DISPLAY}</span>
-          </div>
         </a>
       </aside>
 
